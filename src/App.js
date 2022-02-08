@@ -13,6 +13,8 @@ import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import Dashboard from './components/dashboard/Dashboard'
+import Waters from './components/waters/Waters'
+import Journal from './components/journal/Journal'
 
 const App = () => {
 	const [user, setUser] = useState(null)
@@ -79,7 +81,15 @@ const App = () => {
 					path="/waters"
 					element={
 						<RequireAuth user={user}>
-							<Dashboard msgAlert={msgAlert} user={user} />
+							<Waters msgAlert={msgAlert} user={user} />
+						</RequireAuth>
+					}
+				/>
+				<Route
+					path="/journal"
+					element={
+						<RequireAuth user={user}>
+							<Journal msgAlert={msgAlert} user={user} />
 						</RequireAuth>
 					}
 				/>

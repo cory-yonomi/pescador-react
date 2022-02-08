@@ -10,7 +10,7 @@ export default function Dashboard() {
         <div className={classes.Dashboard}>
 
             <div className={classes.DashboardIconDisplay}>
-                <DashboardIcon title='Add A Trip' goesTo='/journal' >
+                <DashboardIcon title='Add A Trip' goesTo='/journal/add' >
                     <BsPlusSquareFill className={classes.icon}/>
                 </DashboardIcon>
                 <DashboardIcon title='My Waters' goesTo='/waters' >
