@@ -1,9 +1,15 @@
 import classes from './Dashboard.module.css'
+import { Link } from 'react-router-dom'
 
-export default function DashboardIcon({title, goesTo, icon}) {
+export default function DashboardIcon({title, goesTo, icon, children}) {
     return (
-        <div className={classes.DashboardIcon}>
-            <h4>title</h4>
-        </div>
+        <>
+            <Link to={goesTo}>
+                <div className={classes.DashboardIcon}>
+                    {children}
+                    <p>{title}</p>
+                </div>
+            </Link>
+        </>
     )
 }

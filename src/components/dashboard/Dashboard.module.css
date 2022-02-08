@@ -1,0 +1,21 @@
+.Dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.DashboardIconDisplay {
+    display: flex;
+    justify-content: center;
+}
+
+.DashboardIcon {
+    display: inline-block;
+    margin: 20px 5px;
+    text-align: center;
+}
+
+.icon {
+    font-size: 40px;
+    color: green;
+}

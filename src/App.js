@@ -75,6 +75,14 @@ const App = () => {
 						</RequireAuth>
 					}
 				/>
+				<Route
+					path="/waters"
+					element={
+						<RequireAuth user={user}>
+							<Dashboard msgAlert={msgAlert} user={user} />
+						</RequireAuth>
+					}
+				/>
 			</Routes>
 			{msgAlerts.map((msgAlert) => (
 				<AutoDismissAlert
