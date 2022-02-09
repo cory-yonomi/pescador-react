@@ -1,6 +1,7 @@
 // import React, { Component, Fragment } from 'react'
 import React, { useState, Fragment } from 'react'
 import { Route, Routes } from 'react-router-dom'
+import { CloudinaryContext } from 'cloudinary-react'
 import { v4 as uuid } from 'uuid'
 
 // import AuthenticatedRoute from './components/shared/AuthenticatedRoute'
@@ -41,6 +42,7 @@ const App = () => {
 	}
 
 	return (
+		<CloudinaryContext cloudName="cb-sorel-creative">
 		<Fragment>
 			<Header user={user} />
 			<Routes>
@@ -104,7 +106,8 @@ const App = () => {
 					deleteAlert={deleteAlert}
 				/>
 			))}
-		</Fragment>
+			</Fragment>
+		</CloudinaryContext>
 	)
 }
 
