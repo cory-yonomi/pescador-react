@@ -8,46 +8,50 @@ const linkStyle = {
     textDecoration: 'none'
 }
 
-const authenticatedOptions = (
-	<>
-		<Nav.Link>
-			<Link to='change-password' style={linkStyle}>
-				Change Password
-			</Link>
-		</Nav.Link>
-		<Nav.Link>
-			<Link to='sign-out' style={linkStyle}>
-				Sign Out
-			</Link>
-		</Nav.Link>
-	</>
-)
 
-const unauthenticatedOptions = (
-	<>
-        <Nav.Link>
-		    <Link to='sign-up' style={linkStyle}>Sign Up</Link>
-        </Nav.Link>
-        <Nav.Link>
-		    <Link to='sign-in' style={linkStyle}>Sign In</Link>
-        </Nav.Link>
-	</>
-)
 
-const alwaysOptions = (
-	<>
-		<Nav.Link>
-			<Link to='/' style={linkStyle}>
-				Home
-			</Link>
-		</Nav.Link>
-	</>
-)
+const Header = ({ user }) => {
 
-const Header = ({ user }) => (
-	<Navbar bg='primary' variant='dark' expand='md'>
+	const authenticatedOptions = (
+		<>
+			<Nav.Link>
+				<Link to='change-password' style={linkStyle}>
+					Change Password
+				</Link>
+			</Nav.Link>
+			<Nav.Link>
+				<Link to='sign-out' style={linkStyle}>
+					Sign Out
+				</Link>
+			</Nav.Link>
+		</>
+	)
+	
+	const unauthenticatedOptions = (
+		<>
+			<Nav.Link>
+				<Link to='sign-up' style={linkStyle}>Sign Up</Link>
+			</Nav.Link>
+			<Nav.Link>
+				<Link to='sign-in' style={linkStyle}>Sign In</Link>
+			</Nav.Link>
+		</>
+	)
+	
+	const alwaysOptions = (
+		<>
+			<Nav.Link>
+				<Link to='/dashboard' style={linkStyle}>
+					Home
+				</Link>
+			</Nav.Link>
+		</>
+	)
+
+	return (
+		<Navbar bg='primary' variant='dark' expand='md'>
 		<Navbar.Brand>
-            <Link to='/' style={linkStyle}>
+            <Link to={user ? '/dashboard' : '/'} style={linkStyle}>
                 Pescador
             </Link>
         </Navbar.Brand>
@@ -61,7 +65,8 @@ const Header = ({ user }) => (
 				{user ? authenticatedOptions : unauthenticatedOptions}
 			</Nav>
 		</Navbar.Collapse>
-	</Navbar>
-)
+		</Navbar>
+	)
+}
 
 export default Header

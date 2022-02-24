@@ -41,17 +41,17 @@ export default function Dashboard() {
                     <BsJournalBookmarkFill className={classes.icon}/>
                 </DashboardIcon>
             </div>
+            <div className={classes.WidgetDisplay}>
+                <div className={classes.CurrentConditions}>
+                    <h3>Current Conditions at Favorite</h3>
+                    <p>Favorite river information</p>
+                </div>
 
-            <div className={classes.CurrentConditions}>
-                <h3>Current Conditions at Favorite</h3>
-                <p>Favorite river information</p>
+                <div className={classes.WeatherDisplay}>
+                    <h3>Weather Display</h3>
+                    <p>Current and forecast weather conditions</p>
+                </div>
             </div>
-
-            <div className={classes.WeatherDisplay}>
-                <h3>Weather Display</h3>
-                <p>Current and forecast weather conditions</p>
-            </div>
-
         </div>
     )
 }
