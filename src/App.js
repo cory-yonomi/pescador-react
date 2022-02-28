@@ -20,6 +20,7 @@ import Journal from './components/journal/Journal'
 const App = () => {
 	const [user, setUser] = useState(null)
 	const [msgAlerts, setMsgAlerts] = useState([])
+	const [profile, setProfile] = useState(null)
 
 	console.log('user in app', user)
 	console.log('message alerts', msgAlerts)
@@ -53,7 +54,7 @@ const App = () => {
 				/>
 				<Route
 					path="/sign-in"
-					element={<SignIn msgAlert={msgAlert} setUser={setUser} />}
+						element={<SignIn msgAlert={msgAlert} setUser={setUser} setProfile={setProfile}/>}
 				/>
 				<Route
 					path="/sign-out"
@@ -75,7 +76,7 @@ const App = () => {
 					path="/dashboard"
 					element={
 						<RequireAuth user={user}>
-							<Dashboard msgAlert={msgAlert} user={user} />
+							<Dashboard msgAlert={msgAlert} user={user} profile={profile}/>
 						</RequireAuth>
 					}
 				/>

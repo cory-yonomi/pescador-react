@@ -8,8 +8,6 @@ const linkStyle = {
     textDecoration: 'none'
 }
 
-
-
 const Header = ({ user }) => {
 
 	const authenticatedOptions = (

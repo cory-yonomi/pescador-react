@@ -1,6 +1,5 @@
-import { Fragment, useEffect, useState, useRef } from 'react'
+import { Fragment } from 'react'
 import { Link } from 'react-router-dom'
-import mapboxgl from 'mapbox-gl'
 import { Container, Row } from 'react-bootstrap'
 
 const homeStyle = {

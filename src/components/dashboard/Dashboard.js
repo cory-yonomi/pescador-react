@@ -1,10 +1,13 @@
+// import { useEffect, useState } from 'react'
+// import { gql, useQuery, useMutation } from '@apollo/client'
 import classes from './Dashboard.module.css'
 import DashboardIcon from './DashboardIcon'
 import { BsPlusSquareFill, BsJournalBookmarkFill} from 'react-icons/bs'
 import { TiWeatherPartlySunny } from 'react-icons/ti'
 import { BiWater } from 'react-icons/bi'
+import CreateProfile from '../profile/CreateProfile'
 
-export default function Dashboard() {
+export default function Dashboard({ user, profile }) {
 
     // const mapContainer = useRef(null);
 	// const map = useRef(null);
@@ -24,6 +27,14 @@ export default function Dashboard() {
 	// 	});
 	// });
 
+    // const GET_DASHBOARD_DATA = gql`
+    // query {
+    //     waters {
+    //         name
+    //     }
+    // }
+    // `
+
     return (
         <div className={classes.Dashboard}>
 
@@ -42,6 +53,7 @@ export default function Dashboard() {
                 </DashboardIcon>
             </div>
             <div className={classes.WidgetDisplay}>
+                {!profile && <CreateProfile user={user} />}
                 <div className={classes.CurrentConditions}>
                     <h3>Current Conditions at Favorite</h3>
                     <p>Favorite river information</p>

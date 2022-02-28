@@ -29,13 +29,18 @@ const SignIn = (props) => {
 	const onSignIn = (event) => {
 		event.preventDefault()
         console.log('the props', props)
-		const { msgAlert, setUser } = props
+		const { msgAlert, setUser, setProfile } = props
 
         const credentials = {email, password}
 
 		signIn(credentials)
-			.then((res) => setUser(res.data.user))
-			.then(() =>
+            .then((res) => {
+                console.log('data', res.data)
+                setUser(res.data.user)
+                res.data.profile && setProfile(res.data.profile)
+            })
+            .then(() =>
+                
 				msgAlert({
 					heading: 'Sign In Success',
 					message: messages.signInSuccess,
