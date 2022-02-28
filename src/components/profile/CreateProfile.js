@@ -10,7 +10,7 @@ const CreateProfile = ({ user }) => {
     
     // *** GRAPHQL FUNCTIONS ***
     const CREATE_PROFILE = gql`
-    mutation createProfile($firstName: String!, $lastName: String, $zipCode: Int!, $style: String!, $userId: ID){
+    mutation createProfile($firstName: String!, $lastName: String!, $zipCode: Int!, $style: String!, $userId: ID!){
         createProfile(firstName: $firstName, lastName: $lastName, zipCode:  $zipCode, style: $style, userId: $userId){
             firstName
             style

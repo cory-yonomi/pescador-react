@@ -1,14 +1,20 @@
-// import { useEffect, useState } from 'react'
-// import { gql, useQuery, useMutation } from '@apollo/client'
-import classes from './Dashboard.module.css'
-import DashboardIcon from './DashboardIcon'
+// **************** THIRD PARTY DEPENDENCIES ****************
+import { useEffect, useState } from 'react'
+import { gql, useQuery } from '@apollo/client'
+// import axios from 'axios'
 import { BsPlusSquareFill, BsJournalBookmarkFill} from 'react-icons/bs'
 import { TiWeatherPartlySunny } from 'react-icons/ti'
 import { BiWater } from 'react-icons/bi'
+
+// **************** PESCADOR DEPENDENCIES ****************
+import classes from './Dashboard.module.css'
+import DashboardIcon from './DashboardIcon'
 import CreateProfile from '../profile/CreateProfile'
 
 export default function Dashboard({ user, profile }) {
-
+    // **************** STATE ****************
+    const [favoriteStation, setFavoriteStation] = useState(null)
+    // const [stationData, setStationData] = useState(null)
     // const mapContainer = useRef(null);
 	// const map = useRef(null);
 	// const [lng, setLng] = useState(-70.9);
@@ -27,17 +33,36 @@ export default function Dashboard({ user, profile }) {
 	// 	});
 	// });
 
-    // const GET_DASHBOARD_DATA = gql`
-    // query {
-    //     waters {
-    //         name
-    //     }
-    // }
-    // `
+    // **************** GRAPHQL FUNCTIONS ****************
+    const GET_DASHBOARD_DATA = gql`
+    query DashBoardData($station: ID){
+        station(_id: $station) {
+            name
+        }
+    }
+    `
+
+    const { data } = useQuery(GET_DASHBOARD_DATA, {
+        variables: {
+            _id: profile.favoriteStation
+        }
+    })
+
+    // **************** HOOKS ****************
+    useEffect(() => {
+        if (data) {
+            console.log("inside data check")
+            if (data.station) {
+                setFavoriteStation(data.station)
+                // axios({
+                //     url: 
+                // })
+            }
+        }
+    }, [data])
 
     return (
         <div className={classes.Dashboard}>
-
             <div className={classes.DashboardIconDisplay}>
                 <DashboardIcon title='Add A Trip' goesTo='/journal/add' >
                     <BsPlusSquareFill className={classes.icon}/>
@@ -55,7 +80,7 @@ export default function Dashboard({ user, profile }) {
             <div className={classes.WidgetDisplay}>
                 {!profile && <CreateProfile user={user} />}
                 <div className={classes.CurrentConditions}>
-                    <h3>Current Conditions at Favorite</h3>
+                    <h3>Current Conditions at {favoriteStation ? favoriteStation.name : "Favorite"}</h3>
                     <p>Favorite river information</p>
                 </div>
 

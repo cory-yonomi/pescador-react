@@ -1,10 +1,10 @@
-// import React, { Component, Fragment } from 'react'
+// **************** THIRD PARTY DEPENDENCIES ****************
 import React, { useState, Fragment } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { CloudinaryContext } from 'cloudinary-react'
 import { v4 as uuid } from 'uuid'
 
-// import AuthenticatedRoute from './components/shared/AuthenticatedRoute'
+// **************** PESCADOR DEPENDENCIES ****************
 import AutoDismissAlert from './components/shared/AutoDismissAlert/AutoDismissAlert'
 import Header from './components/shared/Header'
 import RequireAuth from './components/shared/RequireAuth'
@@ -18,10 +18,12 @@ import Waters from './components/waters/Waters'
 import Journal from './components/journal/Journal'
 
 const App = () => {
+	// **************** STATE ****************
 	const [user, setUser] = useState(null)
 	const [msgAlerts, setMsgAlerts] = useState([])
 	const [profile, setProfile] = useState(null)
 
+	// **************** COMPONENT FUNCTIONS ****************
 	console.log('user in app', user)
 	console.log('message alerts', msgAlerts)
 	const clearUser = () => {
