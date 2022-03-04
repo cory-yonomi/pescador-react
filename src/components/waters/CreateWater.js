@@ -8,6 +8,8 @@ const CreateWater = ({ user }) => {
     const [waterType, setWaterType] = useState('')
 
     // ************** GRAPHQL FUNCTIONS ****************
+
+    // Create mutation for QGL to insert new Water
     const CREATE_WATER = gql`
     mutation createWater($name: String!, $type: String!, $userId: ID!){
         createWater(name: $name, type: $type, userId: $userId){
@@ -16,8 +18,8 @@ const CreateWater = ({ user }) => {
         }
     }
     `
-
-    const [createCustomer] = useMutation(CREATE_WATER, {
+    // Send mutation to GQL with information from form and user._id
+    const [createWater] = useMutation(CREATE_WATER, {
         variables: {
             name: name,
             type: waterType,
@@ -37,7 +39,7 @@ const CreateWater = ({ user }) => {
     // Handle form submission
     const submitHandler = event => {
         event.preventDefault()
-        createCustomer()
+        createWater()
         setName('')
         setWaterType('')
     }

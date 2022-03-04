@@ -12,37 +12,37 @@ const Header = ({ user }) => {
 
 	const authenticatedOptions = (
 		<>
-			<Nav.Link>
+			<div>
 				<Link to='change-password' style={linkStyle}>
 					Change Password
 				</Link>
-			</Nav.Link>
-			<Nav.Link>
+			</div>
+			<div>
 				<Link to='sign-out' style={linkStyle}>
 					Sign Out
 				</Link>
-			</Nav.Link>
+			</div>
 		</>
 	)
 	
 	const unauthenticatedOptions = (
 		<>
-			<Nav.Link>
+			<div>
 				<Link to='sign-up' style={linkStyle}>Sign Up</Link>
-			</Nav.Link>
-			<Nav.Link>
+			</div>
+			<div>
 				<Link to='sign-in' style={linkStyle}>Sign In</Link>
-			</Nav.Link>
+			</div>
 		</>
 	)
 	
 	const alwaysOptions = (
 		<>
-			<Nav.Link>
+			<div>
 				<Link to='/dashboard' style={linkStyle}>
 					Home
 				</Link>
-			</Nav.Link>
+			</div>
 		</>
 	)
 
