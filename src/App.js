@@ -91,6 +91,14 @@ const App = () => {
 					}
 				/>
 				<Route
+					path="/waters/:action"
+					element={
+						<RequireAuth user={user}>
+							<Waters msgAlert={msgAlert} user={user} />
+						</RequireAuth>
+					}
+				/>
+				<Route
 					path="/journal"
 					element={
 						<RequireAuth user={user}>
