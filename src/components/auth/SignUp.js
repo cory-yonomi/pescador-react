@@ -21,6 +21,9 @@ const SignUp = (props) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
+    const [zipCode, setZipCode] = useState('')
 
     const navigate = useNavigate()
 
@@ -29,7 +32,7 @@ const SignUp = (props) => {
 
 		const { msgAlert, setUser } = props
 
-        const credentials = {email, password, passwordConfirmation}
+        const credentials = {email, password, passwordConfirmation, firstName, lastName, zipCode}
 
 		signUp(credentials)
 			.then(() => signIn(credentials))
@@ -91,6 +94,38 @@ const SignUp = (props) => {
                             type='password'
                             placeholder='Confirm Password'
                             onChange={e => setPasswordConfirmation(e.target.value)}
+                        />
+                    </Form.Group>
+                    <Form.Group controlId='firstName'>
+                        <Form.Label>First Name</Form.Label>
+                        <Form.Control
+                            required
+                            name='firstName'
+                            value={firstName}
+                            type='text'
+                            placeholder='First Name'
+                            onChange={e => setFirstName(e.target.value)}
+                        />
+                    </Form.Group>
+                    <Form.Group controlId='lastName'>
+                        <Form.Label>Last Name</Form.Label>
+                        <Form.Control
+                            name='lastName'
+                            value={lastName}
+                            type='text'
+                            placeholder='Last Name'
+                            onChange={e => setLastName(e.target.value)}
+                        />
+                    </Form.Group>
+                    <Form.Group controlId='zipCode'>
+                        <Form.Label>Zip Code</Form.Label>
+                        <Form.Control
+                            required
+                            name='zipCode'
+                            value={zipCode}
+                            type='number'
+                            placeholder='Zip Code'
+                            onChange={e => setZipCode(e.target.value)}
                         />
                     </Form.Group>
                     <Button variant='primary' type='submit'>
