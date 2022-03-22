@@ -44,7 +44,7 @@ const SignUp = (props) => {
 					variant: 'success',
 				})
 			)
-			.then(() => navigate('/'))
+			.then(() => navigate('/dashboard'))
 			.catch((error) => {
                 setEmail('')
                 setPassword('')
@@ -127,6 +127,14 @@ const SignUp = (props) => {
                             placeholder='Zip Code'
                             onChange={e => setZipCode(e.target.value)}
                         />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Style:</Form.Label>
+                        <Form.Select>
+                            <option>Choose Your Fishing Style</option>
+                            <option value="fly">Fly</option>
+                            <option value="conventional">Conventional</option>
+                        </Form.Select>
                     </Form.Group>
                     <Button variant='primary' type='submit'>
                         Submit

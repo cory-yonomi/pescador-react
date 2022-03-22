@@ -10,6 +10,7 @@ import { BiWater } from 'react-icons/bi'
 import classes from './Dashboard.module.css'
 import DashboardIcon from './DashboardIcon'
 import CreateProfile from '../profile/CreateProfile'
+import AddStation from '../stations/AddStation'
 
 export default function Dashboard({ user, profile }) {
     // **************** STATE ****************
@@ -42,24 +43,24 @@ export default function Dashboard({ user, profile }) {
     }
     `
 
-    const { data } = useQuery(GET_DASHBOARD_DATA, {
-        variables: {
-            _id: profile.favoriteStation
-        }
-    })
+    // const { data } = useQuery(GET_DASHBOARD_DATA, {
+    //     variables: {
+    //         _id: profile.favoriteStation
+    //     }
+    // })
 
-    // **************** HOOKS ****************
-    useEffect(() => {
-        if (data) {
-            console.log("inside data check")
-            if (data.station) {
-                setFavoriteStation(data.station)
-                // axios({
-                //     url: 
-                // })
-            }
-        }
-    }, [data])
+    // // **************** HOOKS ****************
+    // useEffect(() => {
+    //     if (data) {
+    //         console.log("inside data check")
+    //         if (data.station) {
+    //             setFavoriteStation(data.station)
+    //             // axios({
+    //             //     url: 
+    //             // })
+    //         }
+    //     }
+    // }, [data])
 
     return (
         <div className={classes.Dashboard}>
@@ -87,8 +88,9 @@ export default function Dashboard({ user, profile }) {
                 <div className={classes.WeatherDisplay}>
                     <h3>Weather Display</h3>
                     <p>Current and forecast weather conditions</p>
-                </div>
+                </div> 
             </div>
+            <AddStation />
         </div>
     )
 }

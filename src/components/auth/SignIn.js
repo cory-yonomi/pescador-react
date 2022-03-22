@@ -8,28 +8,16 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 const SignIn = (props) => {
-	// constructor(props) {
-	// 	super(props)
-
-	// 	this.state = {
-	// 		email: '',
-	// 		password: '',
-	// 	}
-	// }
+	
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
     const navigate = useNavigate()
 
-	// handleChange = (event) =>
-	// 	this.setState({
-	// 		[event.target.name]: event.target.value,
-	// 	})
-
 	const onSignIn = (event) => {
 		event.preventDefault()
         console.log('the props', props)
-		const { msgAlert, setUser, setProfile } = props
+		const { msgAlert, setUser } = props
 
         const credentials = {email, password}
 
@@ -37,10 +25,9 @@ const SignIn = (props) => {
             .then((res) => {
                 console.log('data', res.data)
                 setUser(res.data.user)
-                res.data.profile && setProfile(res.data.profile)
+                
             })
             .then(() =>
-                
 				msgAlert({
 					heading: 'Sign In Success',
 					message: messages.signInSuccess,
