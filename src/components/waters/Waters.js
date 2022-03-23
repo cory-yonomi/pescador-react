@@ -8,7 +8,7 @@ import classes from './Waters.module.css'
 const Waters = ({ user }) => {
     // ***************** STATE *****************
     const [waters, setWaters] = useState([])
-
+    const [showAdd, setShowAdd] = useState(false)
     // ***************** GRAPHQL FUNCTIONS *******************
 
     // All user's waters query
@@ -47,7 +47,7 @@ const Waters = ({ user }) => {
             </div>
         )
     // Render create form for "add" params
-    } else if(params.action === "add") {
+    } else if(params.action === "add" || showAdd ) {
         return (
             <div className={classes.Waters}>
                 <h2>Add Waters</h2>

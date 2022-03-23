@@ -9,7 +9,7 @@ import { BiWater } from 'react-icons/bi'
 // **************** PESCADOR DEPENDENCIES ****************
 import classes from './Dashboard.module.css'
 import DashboardIcon from './DashboardIcon'
-import CreateProfile from '../profile/CreateProfile'
+
 import AddStation from '../stations/AddStation'
 
 export default function Dashboard({ user, profile }) {
@@ -79,7 +79,7 @@ export default function Dashboard({ user, profile }) {
                 </DashboardIcon>
             </div>
             <div className={classes.WidgetDisplay}>
-                {!profile && <CreateProfile user={user} />}
+                
                 <div className={classes.CurrentConditions}>
                     <h3>Current Conditions at {favoriteStation ? favoriteStation.name : "Favorite"}</h3>
                     <p>Favorite river information</p>

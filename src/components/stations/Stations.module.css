@@ -1,0 +1,8 @@
+.StationDiv {
+    display: flex;
+    justify-content: space-between;
+}
+
+.StationFormInput {
+    margin: 5px;
+}

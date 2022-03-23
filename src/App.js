@@ -106,6 +106,14 @@ const App = () => {
 						</RequireAuth>
 					}
 				/>
+				<Route
+					path="/journal/:action"
+					element={
+						<RequireAuth user={user}>
+							<Journal msgAlert={msgAlert} user={user} />
+						</RequireAuth>
+					}
+				/>
 			</Routes>
 			{msgAlerts.map((msgAlert) => (
 				<AutoDismissAlert
