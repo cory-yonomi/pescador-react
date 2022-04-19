@@ -22,8 +22,13 @@ const AddStation = (props) => {
         }
       })
         .then(response => {
-          setLoading(false)
-          setStations(response.data)
+          if (!response) {
+            setLoading(false)
+            setStations([])
+          } else {
+            setLoading(false)
+            setStations(response.data)
+          }
         })
       .catch(err => console.log(err))
   }
