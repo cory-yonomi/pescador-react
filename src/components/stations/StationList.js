@@ -10,8 +10,7 @@ const StationList = ({loading, stations}) => {
 
   return (
       <div>
-          { loading && "Finding stations..."}
-          { !loading && stations.length >= 1 ? allStations : "No results, try again."}
+          { !loading && allStations}
     </div>
   )
 }
