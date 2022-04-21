@@ -1,0 +1,10 @@
+.Waters {
+    position: relative;
+}
+
+.icon {
+    position: fixed;
+    bottom: 10%;
+    right: 10%;
+    font-size: 80px;
+}

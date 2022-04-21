@@ -18,9 +18,8 @@ const Home = (props) => {
 					<h2>Pescador</h2>
 					<h4>The Angler's Best Friend</h4>
 				</Row>
-				
-					<button><Link to='/sign-in'>Log In</Link></button><button><Link to='/sign-up'>Create Account</Link></button>
-				
+					<button><Link to='/sign-in'>Log In</Link></button>
+					<button><Link to='/sign-up'>Create Account</Link></button>
 			</Container>
 		</Fragment>
 	)

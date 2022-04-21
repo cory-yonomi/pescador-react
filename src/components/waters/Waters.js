@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { gql, useQuery } from '@apollo/client'
 
+import WatersDisplay from './WatersDisplay'
 import CreateWater from './CreateWater'
 import classes from './Waters.module.css'
 
@@ -27,8 +28,8 @@ const Waters = ({ user }) => {
     const { data } = useQuery(GET_USER_WATERS)
     
     // Grab params if they exist
-    const params = useParams()
-    console.log('params:', params)
+    const { action } = useParams()
+    console.log('params:', action)
 
     // Set water data from query
     useEffect(() => {
@@ -37,24 +38,22 @@ const Waters = ({ user }) => {
             setWaters(data.waters)
         }
     }, [data])
+
+    const addClickHandler = () => {
+        setShowAdd(true)
+    }
+
+    const closeClickHandler = () => {
+        setShowAdd(false)
+    }
     
-    // If there are no params render the standard Waters index
-    if (!params.action) {
-        return (
+    return (
+        <>
             <div className={classes.Waters}>
-                <h2>Waters</h2>
-                {waters.map(water => <p>{water.name}</p>)}
+                {showAdd ? <CreateWater user={user} closeClickHandler={closeClickHandler}/> : <WatersDisplay waters={waters} addClickHandler={addClickHandler}/>}
             </div>
-        )
-    // Render create form for "add" params
-    } else if(params.action === "add" || showAdd ) {
-        return (
-            <div className={classes.Waters}>
-                <h2>Add Waters</h2>
-                <CreateWater user={user} />
-            </div>
-        )
-     }
+        </>
+    )
     
 }
 

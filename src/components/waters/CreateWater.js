@@ -1,8 +1,11 @@
 // ***************** THIRD PARTY IMPORTS **********************
 import React, { useState } from 'react'
 import { gql, useMutation } from '@apollo/client'
+import { RiCloseCircleFill } from 'react-icons/ri'
 
-const CreateWater = ({ user }) => {
+import classes from './Waters.module.css'
+
+const CreateWater = ({ user, closeClickHandler }) => {
     // **************** STATE ****************
     const [name, setName] = useState('')
     const [waterType, setWaterType] = useState('')
@@ -61,6 +64,7 @@ const CreateWater = ({ user }) => {
                 </select>
                 <input type="submit" />
             </form>
+            <RiCloseCircleFill className={classes.icon} onClick={closeClickHandler}/>
         </>
         )
 }
