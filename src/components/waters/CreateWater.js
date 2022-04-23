@@ -4,8 +4,9 @@ import { gql, useMutation } from '@apollo/client'
 import { RiCloseCircleFill } from 'react-icons/ri'
 
 import classes from './Waters.module.css'
+import { propTypes } from 'react-bootstrap/esm/Image'
 
-const CreateWater = ({ user, closeClickHandler }) => {
+const CreateWater = ({ user, closeClickHandler, waters, setWaters, history }) => {
     // **************** STATE ****************
     const [name, setName] = useState('')
     const [waterType, setWaterType] = useState('')
@@ -42,9 +43,11 @@ const CreateWater = ({ user, closeClickHandler }) => {
     // Handle form submission
     const submitHandler = event => {
         event.preventDefault()
+        setWaters([...waters, {name: name, type: waterType, userId: user._id}])
         createWater()
         setName('')
         setWaterType('')
+        closeClickHandler()
     }
 
     return (

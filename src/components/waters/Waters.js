@@ -50,7 +50,7 @@ const Waters = ({ user }) => {
     return (
         <>
             <div className={classes.Waters}>
-                {showAdd ? <CreateWater user={user} closeClickHandler={closeClickHandler}/> : <WatersDisplay waters={waters} addClickHandler={addClickHandler}/>}
+                {showAdd ? <CreateWater user={user} closeClickHandler={closeClickHandler} waters={waters} setWaters={setWaters}/> : <WatersDisplay waters={waters} addClickHandler={addClickHandler}/>}
             </div>
         </>
     )
