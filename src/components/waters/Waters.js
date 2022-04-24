@@ -17,6 +17,8 @@ const Waters = ({ user }) => {
     query waters{
         waters{
             name
+            type
+            _id
         }
         stations{
             name

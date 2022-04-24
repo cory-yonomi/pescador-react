@@ -1,13 +1,21 @@
 import React from 'react'
 import { BsPlusSquareFill } from 'react-icons/bs'
 import classes from './Waters.module.css'
+import WaterCard from './WaterCard'
 
 const WatersDisplay = ({ waters, addClickHandler }) => {
+
+  const allWaters = waters.map(water => {
+    return (
+      <WaterCard water={water} />
+    )
+  })
+
   return (
     
                 <div className={classes.WatersDisplay}>
                     <h2>My Waters</h2>
-                    {waters.map(water => <p>{water.name}</p>)}
+                    {allWaters}
                     <BsPlusSquareFill
                         className={classes.icon}
                         onClick={addClickHandler}
