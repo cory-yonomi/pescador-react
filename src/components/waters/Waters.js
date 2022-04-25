@@ -32,10 +32,6 @@ const Waters = ({ user }) => {
             userId: user._id
         }
     })
-    
-    // Grab params if they exist
-    const { action } = useParams()
-    console.log('params:', action)
 
     // Set water data from query
     useEffect(() => {

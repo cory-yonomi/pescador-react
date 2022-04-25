@@ -10,8 +10,6 @@ import { BiWater } from 'react-icons/bi'
 import classes from './Dashboard.module.css'
 import DashboardIcon from './DashboardIcon'
 
-import AddStation from '../stations/AddStation'
-
 export default function Dashboard({ user, profile }) {
     // **************** STATE ****************
     const [favoriteStation, setFavoriteStation] = useState(null)
@@ -90,7 +88,6 @@ export default function Dashboard({ user, profile }) {
                     <p>Current and forecast weather conditions</p>
                 </div> 
             </div>
-            <AddStation />
         </div>
     )
 }

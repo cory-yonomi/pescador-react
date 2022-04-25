@@ -15,6 +15,7 @@ import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import Dashboard from './components/dashboard/Dashboard'
 import Waters from './components/waters/Waters'
+import Water from './components/waters/Water'
 import Journal from './components/journal/Journal'
 
 const App = () => {
@@ -91,10 +92,10 @@ const App = () => {
 					}
 				/>
 				<Route
-					path="/waters/:action"
+					path="/waters/:id"
 					element={
 						<RequireAuth user={user}>
-							<Waters msgAlert={msgAlert} user={user} />
+							<Water msgAlert={msgAlert} user={user} />
 						</RequireAuth>
 					}
 				/>
