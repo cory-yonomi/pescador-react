@@ -14,8 +14,8 @@ const Waters = ({ user }) => {
 
     // All user's waters query
     const GET_USER_WATERS = gql`
-    query waters{
-        waters{
+    query userWaters($userId: ID){
+        userWaters(userId: $userId){
             name
             type
             _id
@@ -27,7 +27,11 @@ const Waters = ({ user }) => {
     `
 
     // Make query to GraphQL as component loads
-    const { data } = useQuery(GET_USER_WATERS)
+    const { data } = useQuery(GET_USER_WATERS, {
+        variables: {
+            userId: user._id
+        }
+    })
     
     // Grab params if they exist
     const { action } = useParams()
@@ -37,7 +41,7 @@ const Waters = ({ user }) => {
     useEffect(() => {
         if (data) {
             console.log('data:', data)
-            setWaters(data.waters)
+            setWaters(data.userWaters)
         }
     }, [data])
 
