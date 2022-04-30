@@ -52,10 +52,10 @@ const CreateWater = ({ user, closeClickHandler, waters, setWaters, history }) =>
 
     return (
         <>
-            <form onSubmit={submitHandler}>
+            <form onSubmit={submitHandler} className={classes.CreateWaterForm}>
             <label htmlFor="name">Name:</label>
 				<input type="text" id="name" onChange={nameInput} />
-				<label htmlFor="waterType">Type:</label>
+                <br></br>
 				<select
 					name="waterType"
 					id="waterType"
@@ -65,6 +65,7 @@ const CreateWater = ({ user, closeClickHandler, waters, setWaters, history }) =>
 					<option value="lake">Lake or Pond</option>
 					<option value="stream">Stream</option>
                 </select>
+                <br></br>
                 <input type="submit" />
             </form>
             <RiCloseCircleFill className={classes.icon} onClick={closeClickHandler}/>

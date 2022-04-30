@@ -1,5 +1,14 @@
 .Waters {
+    margin-top: 25px;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.WatersDisplay, .CreateWaterForm {
+    width: 75%;
+    margin: 0 auto;
 }
 
 .icon {
