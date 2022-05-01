@@ -2,9 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { gql, useQuery } from '@apollo/client'
 import axios from 'axios'
+import classes from './Waters.module.css'
+
+import AddStation from '../stations/AddStation'
 
 const Water = ({ user }) => {
     const [water, setWater] = useState({})
+    const [addStationModal, setAddStationModal] = useState(false)
 
     const { id } = useParams()
     console.log( id )
@@ -42,6 +46,10 @@ const Water = ({ user }) => {
         })
     }
 
+    const addStationHandler = () => {
+        setAddStationModal(true)
+    }
+
     useEffect(()=>{
         if(data){
             setWater(data.water)
@@ -49,7 +57,7 @@ const Water = ({ user }) => {
     }, [data])
 
     return (
-        <>
+        <div className={classes.Water}>
             <div>
                 <h1>{water.name}</h1>
                 <h3>{water.type}</h3>
@@ -57,8 +65,12 @@ const Water = ({ user }) => {
             </div>
             <div>
                 <h2>Stations</h2>
+                <button onClick={addStationHandler}>Add Stations</button>
             </div>
-        </>
+            <div>
+                {addStationModal && <AddStation />}
+            </div>
+        </div>
     )
 };
 

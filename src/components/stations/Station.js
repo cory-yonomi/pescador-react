@@ -2,9 +2,11 @@ import React from 'react'
 import classes from './Stations.module.css'
 
 const Station = ({ station }) => {
+    // ****************** GRAPHQL *********************
+    
 
-    const submitHandler = e => {
-        e.preventDefault()
+    const clickHandler = e => {
+        
         
     }
 
@@ -21,10 +23,8 @@ const Station = ({ station }) => {
     return (
         <div className={classes.StationDiv}>
           <p>{toTitleCase(station.siteName)}</p>
-          <form onSubmit={submitHandler}>
-              <input type="hidden" value={station.siteId} />
-              <input type="submit" value="+" />
-          </form>
+          
+          <button onClick={clickHandler}>+</button>
     </div>
   )
 }

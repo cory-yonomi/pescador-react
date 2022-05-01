@@ -38,7 +38,7 @@ const AddStation = (props) => {
 	}
 
 	return (
-		<div>
+		<div className={classes.AddStation}>
 			<form onSubmit={submitHandler} className={classes.StationForm}>
 				<input
 					type='text'

@@ -6,7 +6,7 @@
     justify-content: center;
 }
 
-.WatersDisplay, .CreateWaterForm {
+.WatersDisplay, .CreateWaterForm, .Water {
     width: 75%;
     margin: 0 auto;
 }
