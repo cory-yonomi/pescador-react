@@ -5,8 +5,8 @@ import classes from './Stations.module.css'
 const Station = ({ water, station }) => {
     // ****************** GRAPHQL *********************
     const CREATE_STATION = gql`
-      mutation AddWaterStation($usgsId: String!, $name: String!, $long: Float!, $lat: Float!){
-        createStation(name: $name, usgsId: $usgsId, long: $long, lat: $lat){
+      mutation AddWaterStation($usgsId: String!, $name: String!, $long: Float!, $lat: Float!, $waterId: ID){
+        createStation(name: $name, usgsId: $usgsId, long: $long, lat: $lat, waterId: $waterId){
           name
           usgsId
           long
@@ -20,7 +20,8 @@ const Station = ({ water, station }) => {
         name: station.siteName,
         usgsId: station.siteId,
         long: station.siteLong,
-        lat: station.siteLat
+        lat: station.siteLat,
+        waterId: water._id
       }
     })
 

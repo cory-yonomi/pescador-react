@@ -4,7 +4,7 @@ import axios from 'axios'
 import classes from './Stations.module.css'
 import StationList from './StationList'
 
-const AddStation = (props) => {
+const AddStation = ({ water }) => {
 	const [search, setSearch] = useState('')
 	const [state, setState] = useState('')
 	const [stations, setStations] = useState([])
@@ -113,6 +113,7 @@ const AddStation = (props) => {
       <p>{message && message}</p>
       <p>{loading && "Searching..."}</p>
 			{stations.length > 0 && (<StationList
+				water={water}
 				stations={stations}
 				setLoading={setLoading}
 			/>)}

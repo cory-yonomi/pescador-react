@@ -8,6 +8,7 @@ import AddStation from '../stations/AddStation'
 
 const Water = ({ user }) => {
     const [water, setWater] = useState({})
+    const [stations, setStations] = useState([])
     const [addStationModal, setAddStationModal] = useState(false)
 
     const { id } = useParams()
@@ -19,9 +20,13 @@ const Water = ({ user }) => {
             _id
             name
             type
-        }
-        stations{
-            name
+            stations {
+                name
+                _id
+                long
+                lat
+                usgsId
+            }
         }
     }
     `
@@ -52,9 +57,18 @@ const Water = ({ user }) => {
 
     useEffect(()=>{
         if(data){
+            console.log('data in water', data)
             setWater(data.water)
+            setStations(data.water.stations)
         }
     }, [data])
+
+    const allStations = stations.map(station => {
+        console.log(station)
+        return (
+        <p>{station.name}</p>
+        )
+    })
 
     return (
         <div className={classes.Water}>
@@ -68,7 +82,7 @@ const Water = ({ user }) => {
                 <button onClick={addStationHandler}>Add Stations</button>
             </div>
             <div>
-                {addStationModal && <AddStation />}
+                {addStationModal ?  <AddStation water={water}/> : allStations }
             </div>
         </div>
     )

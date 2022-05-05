@@ -19,9 +19,13 @@ const Waters = ({ user }) => {
             name
             type
             _id
-        }
-        stations{
-            name
+            stations {
+                name
+                _id
+                usgsId
+                long
+                lat
+            }
         }
     }
     `
