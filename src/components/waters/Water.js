@@ -8,7 +8,7 @@ import AddStation from '../stations/AddStation'
 
 const Water = ({ user }) => {
     const [water, setWater] = useState({})
-    const [stations, setStations] = useState([])
+    const [waterStations, setWaterStations] = useState([])
     const [addStationModal, setAddStationModal] = useState(false)
 
     const { id } = useParams()
@@ -59,11 +59,11 @@ const Water = ({ user }) => {
         if(data){
             console.log('data in water', data)
             setWater(data.water)
-            setStations(data.water.stations)
+            setWaterStations(data.water.stations)
         }
     }, [data])
 
-    const allStations = stations.map(station => {
+    const allStations = waterStations.map(station => {
         console.log(station)
         return (
         <p>{station.name}</p>
@@ -82,7 +82,7 @@ const Water = ({ user }) => {
                 <button onClick={addStationHandler}>Add Stations</button>
             </div>
             <div>
-                {addStationModal ?  <AddStation water={water}/> : allStations }
+                {addStationModal ?  <AddStation water={water} setWaterStations={setWaterStations}/> : allStations }
             </div>
         </div>
     )

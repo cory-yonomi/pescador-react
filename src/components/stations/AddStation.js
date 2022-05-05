@@ -4,10 +4,10 @@ import axios from 'axios'
 import classes from './Stations.module.css'
 import StationList from './StationList'
 
-const AddStation = ({ water }) => {
+const AddStation = ({ water, setWaterStations }) => {
 	const [search, setSearch] = useState('')
 	const [state, setState] = useState('')
-	const [stations, setStations] = useState([])
+	const [foundStations, setFoundStations] = useState([])
 	const [loading, setLoading] = useState(false)
 	const [message, setMessage] = useState(null)
 
@@ -26,12 +26,12 @@ const AddStation = ({ water }) => {
         console.log(response)
 				if (response.data === "") {
           setLoading(false)
-          setStations([])
+          setFoundStations([])
 					setMessage(<p>No results, please try again</p>)
 				} else {
           setLoading(false)
           setMessage(null)
-					setStations(response.data)
+					setFoundStations(response.data)
 				}
 			})
 			.catch((err) => console.log(err))
@@ -112,9 +112,11 @@ const AddStation = ({ water }) => {
       </form>
       <p>{message && message}</p>
       <p>{loading && "Searching..."}</p>
-			{stations.length > 0 && (<StationList
+			{foundStations.length > 0 && (<StationList
 				water={water}
-				stations={stations}
+				source={'found'}
+				stations={foundStations}
+				setWaterStations={setWaterStations}
 				setLoading={setLoading}
 			/>)}
 		</div>

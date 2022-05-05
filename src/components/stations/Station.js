@@ -2,7 +2,7 @@ import React from 'react'
 import { gql, useQuery, useMutation } from '@apollo/client'
 import classes from './Stations.module.css'
 
-const Station = ({ water, station }) => {
+const Station = ({ water, station, setWaterStations, source }) => {
     // ****************** GRAPHQL *********************
     const CREATE_STATION = gql`
       mutation AddWaterStation($usgsId: String!, $name: String!, $long: Float!, $lat: Float!, $waterId: ID){
@@ -26,7 +26,14 @@ const Station = ({ water, station }) => {
     })
 
     const clickHandler = e => {
-        createStation()        
+        createStation()
+        setWaterStations(prevState => [...prevState, {
+          name: station.siteName,
+          usgsId: station.siteId,
+          long: station.siteLong,
+          lat: station.siteLat,
+          waterId: water._id
+        }])        
     }
 
     //borrowed title casing function(Greg Dean on StackOverflow)
@@ -41,7 +48,7 @@ const Station = ({ water, station }) => {
     
     return (
         <div className={classes.StationDiv}>
-          <p>{toTitleCase(station.siteName)}</p>
+          <p>{toTitleCase(source === 'found' ? station.siteName : station.name)}</p>
           
           <button onClick={clickHandler}>+</button>
     </div>

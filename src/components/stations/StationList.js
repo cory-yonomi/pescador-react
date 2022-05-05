@@ -1,16 +1,16 @@
 import React from 'react'
 import Station from './Station'
 
-const StationList = ({water, loading, stations}) => {
+const StationList = ({water, loading, stations, setWaterStations, source}) => {
     let allStations = stations.map(station => {
         return (
-            <Station water={water} station={station} key={station.siteId}></Station>
+            <Station water={water} station={station} setWaterStations={setWaterStations} key={station.siteId} source={source}></Station>
         )
     })
 
   return (
       <div>
-          { !loading && allStations}
+          { !loading && allStations }
     </div>
   )
 }
