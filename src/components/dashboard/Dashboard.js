@@ -1,5 +1,6 @@
 // **************** THIRD PARTY DEPENDENCIES ****************
 import { useEffect, useState } from 'react'
+import axios from 'axios'
 import { gql, useQuery } from '@apollo/client'
 // import axios from 'axios'
 import { BsPlusSquareFill, BsJournalBookmarkFill} from 'react-icons/bs'
@@ -32,33 +33,19 @@ export default function Dashboard({ user, profile }) {
 	// 	});
 	// });
 
-    // **************** GRAPHQL FUNCTIONS ****************
-    const GET_DASHBOARD_DATA = gql`
-    query DashBoardData($station: ID){
-        station(_id: $station) {
-            name
-        }
-    }
-    `
-
-    // const { data } = useQuery(GET_DASHBOARD_DATA, {
-    //     variables: {
-    //         _id: profile.favoriteStation
-    //     }
-    // })
-
-    // // **************** HOOKS ****************
-    // useEffect(() => {
-    //     if (data) {
-    //         console.log("inside data check")
-    //         if (data.station) {
-    //             setFavoriteStation(data.station)
-    //             // axios({
-    //             //     url: 
-    //             // })
-    //         }
-    //     }
-    // }, [data])
+    // **************** HOOKS ****************
+    useEffect(() => {
+        axios({
+            url: `http://localhost:8000/waterData/site/${user.favoriteStation.usgsId}`,
+            method: 'GET',
+            headers: {
+                authorization: `Bearer Token ${user.token}`
+            }
+        })
+        .then(station => {
+            console.log('favoriteStation', station.data)
+        })
+    }, [])
 
     return (
         <div className={classes.Dashboard}>

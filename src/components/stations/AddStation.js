@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react'
-import { gql, useMutation } from '@apollo/client'
+import { useState } from 'react'
 import axios from 'axios'
 import classes from './Stations.module.css'
 import StationList from './StationList'
