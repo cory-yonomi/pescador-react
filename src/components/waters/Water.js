@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { gql, useQuery } from '@apollo/client'
-import axios from 'axios'
+import StationList from '../stations/StationList'
 import classes from './Waters.module.css'
 
 import AddStation from '../stations/AddStation'
@@ -37,20 +37,6 @@ const Water = ({ user }) => {
         }
     })
 
-    const addFavoriteHandler = () => {
-        axios({
-            url: `http://localhost:8000/user/favorite`,
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${user.token}`,
-                'Content-Type': 'application/json'
-            },
-            data: {
-                'stationId': `${water._id}`
-            }
-        })
-    }
-
     const addStationHandler = () => {
         setAddStationModal(true)
     }
@@ -63,26 +49,19 @@ const Water = ({ user }) => {
         }
     }, [data])
 
-    const allStations = waterStations.map(station => {
-        console.log(station)
-        return (
-        <p>{station.name}</p>
-        )
-    })
-
     return (
         <div className={classes.Water}>
             <div>
                 <h1>{water.name}</h1>
                 <h3>{water.type}</h3>
-                <button onClick={addFavoriteHandler}>Set As Favorite</button>
+                
             </div>
             <div>
                 <h2>Stations</h2>
                 <button onClick={addStationHandler}>Add Stations</button>
             </div>
             <div>
-                {addStationModal ?  <AddStation water={water} setWaterStations={setWaterStations}/> : allStations }
+                {addStationModal ?  <AddStation water={water} setWaterStations={setWaterStations}/> : <StationList user={user} water={water} stations={waterStations} source={'water'}/> }
             </div>
         </div>
     )

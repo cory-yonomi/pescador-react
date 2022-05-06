@@ -1,8 +1,9 @@
 import React from 'react'
-import { gql, useQuery, useMutation } from '@apollo/client'
+import axios from 'axios'
+import { gql, useMutation } from '@apollo/client'
 import classes from './Stations.module.css'
 
-const Station = ({ water, station, setWaterStations, source }) => {
+const Station = ({ user, water, station, setWaterStations, source }) => {
     // ****************** GRAPHQL *********************
     const CREATE_STATION = gql`
       mutation AddWaterStation($usgsId: String!, $name: String!, $long: Float!, $lat: Float!, $waterId: ID){
@@ -45,11 +46,27 @@ const Station = ({ water, station, setWaterStations, source }) => {
           }
         )
     }
+
+
+    const addFavoriteHandler = () => {
+      axios({
+          url: `http://localhost:8000/user/favorite`,
+          method: 'POST',
+          headers: {
+              'Authorization': `Bearer ${user.token}`,
+              'Content-Type': 'application/json'
+          },
+          data: {
+              'stationId': `${station._id}`
+          }
+      })
+  }
+
     
     return (
         <div className={classes.StationDiv}>
           <p>{toTitleCase(source === 'found' ? station.siteName : station.name)}</p>
-          
+          <button onClick={addFavoriteHandler}>Set As Favorite</button>
           <button onClick={clickHandler}>+</button>
     </div>
   )
