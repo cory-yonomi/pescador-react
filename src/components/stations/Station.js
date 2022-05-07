@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import axios from 'axios'
 import { gql, useMutation } from '@apollo/client'
+import AuthContext from '../../store/AuthContext'
 import classes from './Stations.module.css'
 
-const Station = ({ user, water, station, setWaterStations, source }) => {
+const Station = ({ water, station, setWaterStations, source }) => {
+  const user = useContext(AuthContext)
+
     // ****************** GRAPHQL *********************
     const CREATE_STATION = gql`
       mutation AddWaterStation($usgsId: String!, $name: String!, $long: Float!, $lat: Float!, $waterId: ID){

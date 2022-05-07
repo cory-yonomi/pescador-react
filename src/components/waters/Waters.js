@@ -5,9 +5,11 @@ import WatersDisplay from './WatersDisplay'
 import CreateWater from './CreateWater'
 import classes from './Waters.module.css'
 import AppDataContext from '../../store/AppDataContext'
+import AuthContext from '../../store/AuthContext'
 
-const Waters = ({ user }) => {
+const Waters = () => {
     const userData = useContext(AppDataContext)
+    const user = useContext(AuthContext).user
     // ***************** STATE *****************
     // const [waters, setWaters] = useState([])
     const [showAdd, setShowAdd] = useState(false)
@@ -44,7 +46,7 @@ const Waters = ({ user }) => {
             console.log('data:', data)
             userData.setUserWaters(data.userWaters)
         }
-    }, [data])
+    }, [data, userData])
 
     const addClickHandler = () => {
         setShowAdd(true)

@@ -1,20 +1,20 @@
 // **************** THIRD PARTY DEPENDENCIES ****************
 import { useEffect, useState, useContext } from 'react'
 import axios from 'axios'
-import { gql, useQuery } from '@apollo/client'
+// import { gql, useQuery } from '@apollo/client'
 // import axios from 'axios'
 import { BsPlusSquareFill, BsJournalBookmarkFill} from 'react-icons/bs'
 import { TiWeatherPartlySunny } from 'react-icons/ti'
 import { BiWater } from 'react-icons/bi'
 
 // **************** PESCADOR DEPENDENCIES ****************
-import AppDataContext from '../../store/AppDataContext'
+import AuthContext from '../../store/AuthContext'
 import classes from './Dashboard.module.css'
 import DashboardIcon from './DashboardIcon'
 import CurrentConditions from './CurrentConditions'
 
-export default function Dashboard({ user, profile }) {
-    const userData = useContext(AppDataContext)
+export default function Dashboard() {
+    const user = useContext(AuthContext).user
     // **************** STATE ****************
     const [favoriteStation, setFavoriteStation] = useState([])
     // const [stationData, setStationData] = useState(null)
@@ -48,7 +48,7 @@ export default function Dashboard({ user, profile }) {
         .then(station => {
             setFavoriteStation(station.data)
         })
-    }, [])
+    })
 
     return (
         <div className={classes.Dashboard}>

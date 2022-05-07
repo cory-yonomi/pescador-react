@@ -1,10 +1,11 @@
 // **************** THIRD PARTY DEPENDENCIES ****************
-import React, { useState, Fragment } from 'react'
+import React, { useState, Fragment, useContext } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { CloudinaryContext } from 'cloudinary-react'
 import { v4 as uuid } from 'uuid'
 
 // **************** PESCADOR DEPENDENCIES ****************
+import AuthContext from './store/AuthContext'
 import AutoDismissAlert from './components/shared/AutoDismissAlert/AutoDismissAlert'
 import Header from './components/shared/Header'
 import RequireAuth from './components/shared/RequireAuth'
@@ -19,10 +20,11 @@ import Water from './components/waters/Water'
 import Journal from './components/journal/Journal'
 
 const App = () => {
+	const user = useContext(AuthContext).user
+	const setUser = useContext(AuthContext).setUser
 	// **************** STATE ****************
-	const [user, setUser] = useState(null)
+	// const [user, setUser] = useState(null)
 	const [msgAlerts, setMsgAlerts] = useState([])
-	const [profile, setProfile] = useState(null)
 
 	// **************** COMPONENT FUNCTIONS ****************
 	console.log('user in app', user)
@@ -57,7 +59,7 @@ const App = () => {
 				/>
 				<Route
 					path="/sign-in"
-						element={<SignIn msgAlert={msgAlert} setUser={setUser} setProfile={setProfile}/>}
+						element={<SignIn msgAlert={msgAlert} />}
 				/>
 				<Route
 					path="/sign-out"
@@ -79,7 +81,7 @@ const App = () => {
 					path="/dashboard"
 					element={
 						<RequireAuth user={user}>
-							<Dashboard msgAlert={msgAlert} user={user} profile={profile}/>
+							<Dashboard msgAlert={msgAlert} user={user}/>
 						</RequireAuth>
 					}
 				/>

@@ -4,16 +4,15 @@ import { gql, useMutation } from '@apollo/client'
 import { RiCloseCircleFill } from 'react-icons/ri'
 
 import classes from './Waters.module.css'
-import { propTypes } from 'react-bootstrap/esm/Image'
 
-const CreateWater = ({ user, closeClickHandler, waters, setWaters, history }) => {
+const CreateWater = ({ user, closeClickHandler, waters, setWaters }) => {
     // **************** STATE ****************
     const [name, setName] = useState('')
     const [waterType, setWaterType] = useState('')
 
     // ************** GRAPHQL FUNCTIONS ****************
 
-    // Create mutation for QGL to insert new Water
+    // Create mutation for GQL to insert new Water
     const CREATE_WATER = gql`
     mutation createWater($name: String!, $type: String!, $userId: ID!){
         createWater(name: $name, type: $type, userId: $userId){

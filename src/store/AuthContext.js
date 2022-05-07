@@ -15,3 +15,5 @@ export function AuthContextProvider({children}) {
     )
 
 }
+
+export default AuthContext

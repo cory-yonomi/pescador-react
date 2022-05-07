@@ -17,7 +17,11 @@ export function AppDataProvider({children}){
                 favoriteStation: favoriteStation,
                 setFavoriteStation: setFavoriteStation,
                 selectedWater: selectedWater,
-                setSelectedWater: setSelectedWater
+                setSelectedWater: setSelectedWater,
+                waterStations: waterStations,
+                setWaterStations: setWaterStations,
+                foundStations: foundStations,
+                setFoundStations: setFoundStations
             }
         }>
             {children}

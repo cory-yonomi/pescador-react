@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import AuthContext from '../../store/AuthContext'
 import { signIn } from '../../api/auth'
 import messages from '../shared/AutoDismissAlert/messages'
 
@@ -8,6 +9,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 const SignIn = (props) => {
+    const user = useContext(AuthContext)
 	
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -17,15 +19,14 @@ const SignIn = (props) => {
 	const onSignIn = (event) => {
 		event.preventDefault()
         console.log('the props', props)
-		const { msgAlert, setUser } = props
+		const { msgAlert } = props
 
         const credentials = {email, password}
 
 		signIn(credentials)
             .then((res) => {
                 console.log('data', res.data)
-                setUser(res.data.user)
-                
+                user.setUser(res.data.user)
             })
             .then(() =>
 				msgAlert({
