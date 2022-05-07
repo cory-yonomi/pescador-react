@@ -1,5 +1,5 @@
 // **************** THIRD PARTY DEPENDENCIES ****************
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import axios from 'axios'
 import { gql, useQuery } from '@apollo/client'
 // import axios from 'axios'
@@ -8,12 +8,15 @@ import { TiWeatherPartlySunny } from 'react-icons/ti'
 import { BiWater } from 'react-icons/bi'
 
 // **************** PESCADOR DEPENDENCIES ****************
+import AppDataContext from '../../store/AppDataContext'
 import classes from './Dashboard.module.css'
 import DashboardIcon from './DashboardIcon'
+import CurrentConditions from './CurrentConditions'
 
 export default function Dashboard({ user, profile }) {
+    const userData = useContext(AppDataContext)
     // **************** STATE ****************
-    const [favoriteStation, setFavoriteStation] = useState(null)
+    const [favoriteStation, setFavoriteStation] = useState([])
     // const [stationData, setStationData] = useState(null)
     // const mapContainer = useRef(null);
 	// const map = useRef(null);
@@ -32,7 +35,7 @@ export default function Dashboard({ user, profile }) {
 	// 	zoom: zoom
 	// 	});
 	// });
-
+    
     // **************** HOOKS ****************
     useEffect(() => {
         axios({
@@ -43,7 +46,7 @@ export default function Dashboard({ user, profile }) {
             }
         })
         .then(station => {
-            console.log('favoriteStation', station.data)
+            setFavoriteStation(station.data)
         })
     }, [])
 
@@ -69,6 +72,8 @@ export default function Dashboard({ user, profile }) {
                     <h3>Current Conditions at {favoriteStation ? favoriteStation.name : "Favorite"}</h3>
                     <p>Favorite river information</p>
                 </div>
+
+                {favoriteStation.length > 0 && <CurrentConditions station={favoriteStation}/>}
 
                 <div className={classes.WeatherDisplay}>
                     <h3>Weather Display</h3>

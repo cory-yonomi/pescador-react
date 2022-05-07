@@ -1,13 +1,15 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { gql, useQuery } from '@apollo/client'
 
 import WatersDisplay from './WatersDisplay'
 import CreateWater from './CreateWater'
 import classes from './Waters.module.css'
+import AppDataContext from '../../store/AppDataContext'
 
 const Waters = ({ user }) => {
+    const userData = useContext(AppDataContext)
     // ***************** STATE *****************
-    const [waters, setWaters] = useState([])
+    // const [waters, setWaters] = useState([])
     const [showAdd, setShowAdd] = useState(false)
     // ***************** GRAPHQL FUNCTIONS *******************
 
@@ -40,7 +42,7 @@ const Waters = ({ user }) => {
     useEffect(() => {
         if (data) {
             console.log('data:', data)
-            setWaters(data.userWaters)
+            userData.setUserWaters(data.userWaters)
         }
     }, [data])
 
@@ -55,7 +57,7 @@ const Waters = ({ user }) => {
     return (
         <>
             <div className={classes.Waters}>
-                {showAdd ? <CreateWater user={user} closeClickHandler={closeClickHandler} waters={waters} setWaters={setWaters}/> : <WatersDisplay waters={waters} addClickHandler={addClickHandler}/>}
+                {showAdd ? <CreateWater user={user} closeClickHandler={closeClickHandler} waters={userData.userWaters} setWaters={userData.setUserWaters}/> : <WatersDisplay waters={userData.userWaters} addClickHandler={addClickHandler}/>}
             </div>
         </>
     )

@@ -66,8 +66,8 @@ const Station = ({ user, water, station, setWaterStations, source }) => {
     return (
         <div className={classes.StationDiv}>
           <p>{toTitleCase(source === 'found' ? station.siteName : station.name)}</p>
-          <button onClick={addFavoriteHandler}>Set As Favorite</button>
-          <button onClick={clickHandler}>+</button>
+          {source === 'found' ? <button onClick={clickHandler}>+</button> : <button onClick={addFavoriteHandler}>Set As Favorite</button>}
+          
     </div>
   )
 }
