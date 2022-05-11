@@ -48,7 +48,7 @@ export default function Dashboard() {
         .then(station => {
             setFavoriteStation(station.data)
         })
-    })
+    }, [user])
 
     return (
         <div className={classes.Dashboard}>
@@ -68,10 +68,10 @@ export default function Dashboard() {
             </div>
             <div className={classes.WidgetDisplay}>
                 
-                <div className={classes.CurrentConditions}>
-                    <h3>Current Conditions at {favoriteStation ? favoriteStation.name : "Favorite"}</h3>
+                {/* <div className={classes.CurrentConditions}>
+                    <h3>Current Conditions at {favoriteStation ? favoriteStation[1].sourceInfo.siteName : "Favorite"}</h3>
                     <p>Favorite river information</p>
-                </div>
+                </div> */}
 
                 {favoriteStation.length > 0 && <CurrentConditions station={favoriteStation}/>}
 
