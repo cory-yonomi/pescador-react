@@ -15,6 +15,11 @@
     text-align: center;
 }
 
+.WidgetDisplay {
+    width: 75%;
+    height: auto;
+}
+
 .icon {
     font-size: 40px;
     color: green;

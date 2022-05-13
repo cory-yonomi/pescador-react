@@ -73,7 +73,7 @@ export default function Dashboard() {
                     <p>Favorite river information</p>
                 </div> */}
 
-                {favoriteStation.length > 0 && <CurrentConditions station={favoriteStation}/>}
+                <CurrentConditions station={favoriteStation}/>
 
                 <div className={classes.WeatherDisplay}>
                     <h3>Weather Display</h3>
