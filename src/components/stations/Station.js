@@ -5,7 +5,7 @@ import AuthContext from '../../store/AuthContext'
 import classes from './Stations.module.css'
 
 const Station = ({ water, station, setWaterStations, source }) => {
-  const user = useContext(AuthContext)
+  const user = useContext(AuthContext).user
 
     // ****************** GRAPHQL *********************
     const CREATE_STATION = gql`
@@ -52,6 +52,7 @@ const Station = ({ water, station, setWaterStations, source }) => {
 
 
     const addFavoriteHandler = () => {
+      console.log('user in favoriteHandler', user)
       axios({
           url: `http://localhost:8000/user/favorite`,
           method: 'POST',

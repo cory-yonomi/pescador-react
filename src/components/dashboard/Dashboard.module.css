@@ -15,9 +15,14 @@
     text-align: center;
 }
 
+.DashboardChart {
+    width: 75%;
+    height: 200px;
+}
+
 .WidgetDisplay {
     width: 75%;
-    height: auto;
+    
 }
 
 .icon {
