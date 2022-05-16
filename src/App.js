@@ -50,7 +50,7 @@ const App = () => {
 	return (
 		<CloudinaryContext cloudName="cb-sorel-creative">
 		<Fragment>
-			<Header user={user} />
+			<Header />
 			<Routes>
 				<Route path="/" element={<Home msgAlert={msgAlert} user={user} />} />
 				<Route

@@ -5,6 +5,7 @@ import StationList from '../stations/StationList'
 import classes from './Waters.module.css'
 
 import AddStation from '../stations/AddStation'
+import BackButton from '../shared/BackButton'
 
 const Water = ({ user }) => {
     const [water, setWater] = useState({})
@@ -63,6 +64,7 @@ const Water = ({ user }) => {
             <div>
                 {addStationModal ?  <AddStation water={water} setWaterStations={setWaterStations}/> : <StationList user={user} water={water} stations={waterStations} source={'water'}/> }
             </div>
+            <BackButton />
         </div>
     )
 };

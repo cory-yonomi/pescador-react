@@ -1,14 +1,16 @@
-import React, { Fragment } from 'react'
+import React, { useContext } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { Link } from 'react-router-dom'
+import AuthContext from '../../store/AuthContext'
 
 const linkStyle = {
     color: 'white',
     textDecoration: 'none'
 }
 
-const Header = ({ user }) => {
+const Header = () => {
+	const user = useContext(AuthContext).user
 
 	const authenticatedOptions = (
 		<>
@@ -49,18 +51,18 @@ const Header = ({ user }) => {
 	return (
 		<Navbar bg='primary' variant='dark' expand='md'>
 		<Navbar.Brand>
-            <Link to={user ? '/dashboard' : '/'} style={linkStyle}>
+            <Link to={user.token ? '/dashboard' : '/'} style={linkStyle}>
                 Pescador
             </Link>
         </Navbar.Brand>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />
 		<Navbar.Collapse id='basic-navbar-nav'>
 			<Nav className='ml-auto'>
-				{user && (
+				{user.token && (
 					<span className='navbar-text mr-2'>Welcome, {user.email}</span>
 				)}
 				{alwaysOptions}
-				{user ? authenticatedOptions : unauthenticatedOptions}
+				{user.token ? authenticatedOptions : unauthenticatedOptions}
 			</Nav>
 		</Navbar.Collapse>
 		</Navbar>
