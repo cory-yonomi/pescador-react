@@ -5,6 +5,7 @@ import classes from './Dashboard.module.css'
 const CurrentConditions = ({station}) => {
 
   return (
+    
       <div className={classes.CurrentConditions}>
         <div>
           <h3>Current Conditions</h3>
