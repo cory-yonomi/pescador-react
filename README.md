@@ -1,38 +1,20 @@
-# Getting Started with Create React App
+# Pescador 2 - React Refactor
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A water and weather condition dashboard and journal for anglers of all styles.
 
-## Available Scripts
+This project was originally built in the PEN stack: PostgreSQL, Express, EJS, and Node. The final product lacked much of the functionality
+I set out to include and EJS made laying out a UI a bit clunkier than I'd have liked. After learning React, it seemed a much better option for this
+application.
 
-In the project directory, you can run:
+## Tech Stack
 
-### `npm start`
+React.js | MongoDB | Node | Express | Apollo GraphQL | Recharts | MapBox
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+APIs: United States Geological Survey Water Data Service API, the OpenWeather API, FIPS County Code API
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## User Story
 
+I am an angler who fishes in the US. I need a single service that provides current and forecast weather, conditions for my favorite waters, and a way to journal my fishing trips.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+I need to see current and past values for specific waterways.
+I need to see past, current, and forecast weather information for a selected area.
