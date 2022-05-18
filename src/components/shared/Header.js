@@ -51,18 +51,18 @@ const Header = () => {
 	return (
 		<Navbar bg='primary' variant='dark' expand='md'>
 		<Navbar.Brand>
-            <Link to={user.token ? '/dashboard' : '/'} style={linkStyle}>
+            <Link to={user ? '/dashboard' : '/'} style={linkStyle}>
                 Pescador
             </Link>
         </Navbar.Brand>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />
 		<Navbar.Collapse id='basic-navbar-nav'>
 			<Nav className='ml-auto'>
-				{user.token && (
+				{user && (
 					<span className='navbar-text mr-2'>Welcome, {user.email}</span>
 				)}
 				{alwaysOptions}
-				{user.token ? authenticatedOptions : unauthenticatedOptions}
+				{user ? authenticatedOptions : unauthenticatedOptions}
 			</Nav>
 		</Navbar.Collapse>
 		</Navbar>

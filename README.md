@@ -1,4 +1,4 @@
-# Pescador 2 - React Refactor
+# Pescador 2 - React Refactor - Client
 
 A water and weather condition dashboard and journal for anglers of all styles.
 
@@ -8,13 +8,16 @@ application.
 
 ## Tech Stack
 
-React.js | MongoDB | Node | Express | Apollo GraphQL | Recharts | MapBox
+React | MongoDB | Node | Express | Apollo GraphQL | Recharts | MapBox
 
-APIs: United States Geological Survey Water Data Service API, the OpenWeather API, FIPS County Code API
+APIs: US Geological Survey Water Data, Google Geocoding, OpenWeather, FIPS County Code
 
 ## User Story
 
-I am an angler who fishes in the US. I need a single service that provides current and forecast weather, conditions for my favorite waters, and a way to journal my fishing trips.
+I am an angler who fishes in the US.
 
-I need to see current and past values for specific waterways.
+I need to see current and past data for specific waterways - namely: streamflow, gage height, lake height above datum, surface temp where available.
+    - I would like this data presented in a dynamic graph
 I need to see past, current, and forecast weather information for a selected area.
+    - I would like to access weather maps - radar, wind speed/direction
+I need to log fishing trips and subsequent catches
