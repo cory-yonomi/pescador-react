@@ -10,6 +10,7 @@ import AutoDismissAlert from './components/shared/AutoDismissAlert/AutoDismissAl
 import Header from './components/shared/Header'
 import RequireAuth from './components/shared/RequireAuth'
 import Home from './components/Home'
+import Search from './components/search/Search'
 import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
@@ -53,6 +54,7 @@ const App = () => {
 			<Header />
 			<Routes>
 				<Route path="/" element={<Home msgAlert={msgAlert} user={user} />} />
+				<Route path="/search" element={<Search />} />
 				<Route
 					path="/sign-up"
 					element={<SignUp msgAlert={msgAlert} setUser={setUser} />}
