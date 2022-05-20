@@ -15,7 +15,7 @@ const Home = (props) => {
 		<Fragment >
 			<Container style={homeStyle}>
 				<Row>
-					<h2>Pescador</h2>
+					<h1>Pescador</h1>
 					<h4>The Angler's Best Friend</h4>
 				</Row>
 					<button><Link to='/sign-in'>Log In</Link></button>

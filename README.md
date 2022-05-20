@@ -2,9 +2,13 @@
 
 A water and weather condition dashboard and journal for anglers of all styles.
 
-This project was originally built in the PEN stack: PostgreSQL, Express, EJS, and Node. The final product lacked much of the functionality
-I set out to include and EJS made laying out a UI a bit clunkier than I'd have liked. After learning React, it seemed a much better option for this
-application.
+PEN to MERN + GraphQL refactor of my first full stack application.
+
+## About
+
+Pescador provides a single location to get all of the information an angler could want about their waterways and weather.
+
+Unauthenticated users will be able to enter a zip code or county name to receive weather and conditions at nearby streams, lakes, and ponds. Users who create accounts and log in will be able to create favorite waterways as "Waters". These waters will collect a list of user chosen data sites in order to be quickly accessed. These waters and sites can be connected to trips that will track sites visited, date, weather and water conditions, and fish caught.
 
 ## Tech Stack
 
