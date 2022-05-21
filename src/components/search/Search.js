@@ -3,7 +3,6 @@ import SearchBar from "../shared/SearchBar";
 
 const Search = () => {
     const [searchBy, setSearchBy] = useState(null)
-    
 
     return (
         <>

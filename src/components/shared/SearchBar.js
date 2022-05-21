@@ -1,28 +1,72 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import classes from './Shared.module.css'
 
 const SearchBar = ({formStyle}) => {
     const [searchResults, setSearchResults] = useState([])
-    const [zipInput, setZipInput] = useState(null)
+    const [zipInput, setZipInput] = useState('')
     const [countyInput, setCountyInput] = useState('')
     const [stateInput, setStateInput] = useState('')
     const [latInput, setLatInput] = useState('')
     const [longInput, setLongInput] = useState('')
 
-    function submitHander(e) {
+    function submitHandler(e) {
         e.preventDefault()
-
+        axios({
+            method: 'post',
+            url: 'http://localhost:8000/search',
+            data: {
+                search: {
+                    param: formStyle,
+                    zip: zipInput,
+                    county: countyInput,
+                    state: stateInput,
+                    lat: latInput,
+                    long: longInput
+                }
+            }
+        })
+            .then(resp => {
+                console.log(resp)
+            })
     }
+
+    function clearState() {
+        setCountyInput('')
+    }
+
+    function zipHandler(e) {
+        setZipInput(e.target.value)
+    }
+
+    function stateHandler(e) {
+        setStateInput(e.target.value)
+    }
+
+    function countyHandler(e) {
+        setCountyInput(e.target.value)
+    }
+
+    function latHandler(e) {
+        setLatInput(e.target.value)
+    }
+
+    function longHandler(e) {
+        setLongInput(e.target.value)
+    }
+
+    useEffect(()=>{
+        clearState()
+    })
 
     const countySearch = (
         <>
             <label>County name:</label>
-            <input type="text" placeholder="County Name" />
+            <input type="text" placeholder="County Name" onChange={countyHandler}/>
             <label>State:</label>
             <select
 					name='state'
-					onChange={(e) => setStateInput(e.target.value)}
+					onChange={stateHandler}
 					className={classes.StationFormInput}
 				>
 					<option value='AL'>AL</option>
@@ -84,7 +128,7 @@ const SearchBar = ({formStyle}) => {
     const zipSearch = (
         <>
             <label>Enter Your Zip</label>
-            <input type="text" placeholder="Zip Code" />
+            <input type="text" placeholder="Zip Code" onChange={zipHandler}/>
             <br />
         </>
     )
@@ -92,17 +136,17 @@ const SearchBar = ({formStyle}) => {
     const coordSearch = (
         <>
             <label>Latitude:</label>
-            <input type="text" />
+            <input type="text" onChange={latHandler}/>
             <br />
             <label>Longitude:</label>
-            <input type="text" />
+            <input type="text" onChange={longHandler}/>
             <br />
         </>
     )
 
     return (
         <>
-            <form>
+            <form onSubmit={submitHandler}>
                 {formStyle === 'county' && countySearch}
                 {formStyle === 'zip' && zipSearch}
                 {formStyle === 'coords' && coordSearch}
