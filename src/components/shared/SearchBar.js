@@ -2,11 +2,8 @@ import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import classes from './Shared.module.css'
 
-const SearchBar = ({formStyle}) => {
-    const [searchResults, setSearchResults] = useState([])
-    const [weather, setWeather] = useState()
-    const [stations, setStations] = useState()
-    const [loading, setLoading] = useState(false)
+const SearchBar = ({formStyle, setLoading, setStations, setWeather}) => {
+    
     const [zipInput, setZipInput] = useState('')
     const [countyInput, setCountyInput] = useState('')
     const [stateInput, setStateInput] = useState('')
@@ -18,10 +15,9 @@ const SearchBar = ({formStyle}) => {
         setLoading(true)
         axios({
             method: 'post',
-            url: 'http://localhost:8000/search',
+            url: `http://localhost:8000/search/${formStyle}`,
             data: {
                 search: {
-                    param: formStyle,
                     zip: zipInput,
                     county: countyInput,
                     state: stateInput,

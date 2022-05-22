@@ -1,8 +1,12 @@
-import React, {useState} from "react"
-import SearchBar from "../shared/SearchBar";
+import React, {useState} from 'react'
+import SearchBar from '../shared/SearchBar'
+import Results from './Results'
 
 const Search = () => {
     const [searchBy, setSearchBy] = useState(null)
+    const [weather, setWeather] = useState()
+    const [stations, setStations] = useState()
+    const [loading, setLoading] = useState(false)
 
     return (
         <>
@@ -16,9 +20,15 @@ const Search = () => {
                 </div>
             </div>
             <div>
-                <SearchBar formStyle={searchBy} />
+                <SearchBar 
+                    formStyle={searchBy} 
+                    setLoading={setLoading} 
+                    setStations={setStations} 
+                    setWeather ={setWeather} 
+                />
             </div>
-        </>);
-};
+            {!loading && weather ? <Results /> : null}
+        </>)
+}
 
-export default Search;
+export default Search
