@@ -4,6 +4,9 @@ import classes from './Shared.module.css'
 
 const SearchBar = ({formStyle}) => {
     const [searchResults, setSearchResults] = useState([])
+    const [weather, setWeather] = useState()
+    const [stations, setStations] = useState()
+    const [loading, setLoading] = useState(false)
     const [zipInput, setZipInput] = useState('')
     const [countyInput, setCountyInput] = useState('')
     const [stateInput, setStateInput] = useState('')
@@ -12,6 +15,7 @@ const SearchBar = ({formStyle}) => {
 
     function submitHandler(e) {
         e.preventDefault()
+        setLoading(true)
         axios({
             method: 'post',
             url: 'http://localhost:8000/search',
@@ -27,7 +31,10 @@ const SearchBar = ({formStyle}) => {
             }
         })
             .then(resp => {
-                console.log(resp)
+                setWeather(resp.data.weather)
+                setStations(resp.data.sites)
+                setLoading(false)
+                console.log(resp.data)
             })
     }
 
