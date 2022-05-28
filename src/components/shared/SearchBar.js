@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import axios from 'axios'
-import classes from './Shared.module.css'
+// import classes from './Shared.module.css'
 
 const SearchBar = ({formStyle, setLoading, setStations, setWeather}) => {
     

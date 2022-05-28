@@ -7,7 +7,7 @@ const WatersDisplay = ({ waters, addClickHandler }) => {
 
   const allWaters = waters.map(water => {
     return (
-      <WaterCard water={water} />
+      <WaterCard water={water} key={water._id}/>
     )
   })
 

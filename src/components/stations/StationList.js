@@ -9,18 +9,22 @@ const StationList = ({water, loading, stations, setWaterStations, source}) => {
 
     if(!water){
         allStations = stations.map(station => {
-            return <Station station={station} key={station.usgsId}></Station>
+            return <Station station={station} key={station.usgsId} provideData={true}/>
         })
     } else if(water && source === 'water'){
         allStations = stations.map(station => {
             return (
-                <Station station={station} key={station.usgsId}><FavoriteButton station={station}/></Station>
+                <Station station={station} key={station.usgsId}>
+                    <FavoriteButton station={station}/>
+                </Station>
             )
         })
     } else if(water && source === 'found'){
         allStations = stations.map(station => {
             return (
-                <Station station={station} key={station.usgsId}><AddButton setWaterStations={setWaterStations} water={water} station={station}/></Station>
+                <Station station={station} key={station.usgsId}>
+                    <AddButton setWaterStations={setWaterStations} water={water} station={station}/>
+                </Station>
             )
         })
     }
