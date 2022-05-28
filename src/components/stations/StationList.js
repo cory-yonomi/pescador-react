@@ -1,12 +1,31 @@
 import React from 'react'
+import AddButton from '../shared/AddButton'
+import FavoriteButton from '../shared/FavoriteButton'
 import Station from './Station'
 
-const StationList = ({user, water, loading, stations, setWaterStations, source}) => {
-    let allStations = stations.map(station => {
-        return (
-            <Station water={water} station={station} setWaterStations={setWaterStations} key={station.siteId} source={source} user={user}></Station>
-        )
-    })
+const StationList = ({water, loading, stations, setWaterStations, source}) => {
+    
+    let allStations
+
+    if(!water){
+        allStations = stations.map(station => {
+            return <Station station={station} key={station.usgsId}></Station>
+        })
+    } else if(water && source === 'water'){
+        allStations = stations.map(station => {
+            return (
+                <Station station={station} key={station.usgsId}><FavoriteButton station={station}/></Station>
+            )
+        })
+    } else if(water && source === 'found'){
+        allStations = stations.map(station => {
+            return (
+                <Station station={station} key={station.usgsId}><AddButton setWaterStations={setWaterStations} water={water} station={station}/></Station>
+            )
+        })
+    }
+    
+    
 
   return (
       <div>

@@ -14,7 +14,6 @@ const Search = () => {
                 <h3>Get Your Local Conditions</h3>
                 <p>Choose Your Search:</p>
                 <div>
-                    <button onClick={()=> setSearchBy('county')}>County Name</button>
                     <button onClick={()=> setSearchBy('zip')}>Zip Code</button>
                     <button onClick={()=> setSearchBy('coords')}>Long + Lat</button>
                 </div>
@@ -27,7 +26,7 @@ const Search = () => {
                     setWeather ={setWeather} 
                 />
             </div>
-            {!loading && weather ? <Results /> : null}
+            {!loading && weather ? <Results stations={stations} weather={weather} loading={loading} /> : null}
         </>)
 }
 

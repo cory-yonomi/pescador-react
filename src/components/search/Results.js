@@ -1,9 +1,11 @@
 import React from 'react'
+import StationList from '../stations/StationList'
+import classes from './Search.module.css'
 
-const Results = ({weather, stations}) => {
+const Results = ({loading, weather, stations}) => {
     return (
-        <div>
-            
+        <div className={classes.Results}>
+            <StationList loading={loading} stations={stations} source='search'/>
         </div>
     )
 }

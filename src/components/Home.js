@@ -1,12 +1,10 @@
-import { Fragment, useState } from "react";
-import { Link } from "react-router-dom";
-import { Container, Row } from "react-bootstrap";
-import SearchBar from "./shared/SearchBar";
+import { Link } from "react-router-dom"
+import { Container, Row } from "react-bootstrap"
 
 const homeStyle = {
     position: "relative",
     marginLeft: "20%",
-};
+}
 
 const Home = (props) => {
 
@@ -29,7 +27,7 @@ const Home = (props) => {
                 <Link to="/search"><button>Go</button></Link>
             </Container> 
         </>
-    );
-};
+    )
+}
 
-export default Home;
+export default Home
