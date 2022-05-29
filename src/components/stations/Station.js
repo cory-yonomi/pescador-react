@@ -17,7 +17,7 @@ const Station = ({ station, provideData, children }) => {
             <p>
                 {toTitleCase(station.name)}
             </p>
-            {provideData === true && `${station.value[0].value} ft³/s`}
+            {provideData && `${station.value[0].value} ft³/s`}
             {children}
         </div>
     );
