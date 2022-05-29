@@ -6,8 +6,10 @@ import classes from './Search.module.css'
 const Results = ({loading, weather, stations}) => {
     return (
         <div className={classes.Results}>
-            {!loading && <WeatherCard weather={weather} loading={loading} period='current' />}
-            {!loading && <WeatherCard weather={weather} loading={loading} period='hourly' />}
+            <div className={classes.weatherDisplay}>
+                {!loading && <WeatherCard weather={weather} loading={loading} period='current' />}
+                {!loading && <WeatherCard weather={weather} loading={loading} period='hourly' />}
+            </div>
             <StationList loading={loading} stations={stations} source='search'/>
         </div>
     )
