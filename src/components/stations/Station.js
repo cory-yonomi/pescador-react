@@ -17,7 +17,8 @@ const Station = ({ station, provideData, children }) => {
             <p>
                 {toTitleCase(station.name)}
             </p>
-            {provideData && `${station.value[0].value} ft³/s`}
+            {provideData && station.flowRate && `Flow: ${station.flowRate} ft³/s  `}
+            {provideData && station.gageHt && `Gage height: ${station.gageHt} ft`}
             {children}
         </div>
     );

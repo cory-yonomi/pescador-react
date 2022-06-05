@@ -10,7 +10,7 @@ const Results = ({loading, weather, stations}) => {
                 {!loading && <WeatherCard weather={weather} loading={loading} period='current' />}
                 {!loading && <WeatherCard weather={weather} loading={loading} period='hourly' />}
             </div>
-            <StationList loading={loading} stations={stations} source='search'/>
+            <StationList loading={loading} stations={stations.streams} source='search'/>
         </div>
     )
 }
