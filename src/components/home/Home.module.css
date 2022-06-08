@@ -1,0 +1,25 @@
+.Home {
+    width: 65%;
+    margin: 50px auto;
+    text-align: center;
+    font-family: 'Roboto Condensed';
+}
+
+.Row {
+    margin-top: 50px;
+    color: lightgray
+}
+
+.Title {
+    font-size: 6rem;
+    font-family: 'Yellowtail';
+    color: white;
+}
+
+.Button {
+    background: mediumspringgreen;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    margin: 10px;
+}
