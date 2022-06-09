@@ -1,4 +1,6 @@
 .Dashboard {
+    width: 65%;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,13 +18,23 @@
 }
 
 .DashboardChart {
-    width: 75%;
+    margin: 0 auto;
+    padding-right: 30px;
+    padding-top: 10px;
+    width: 100%;
     height: 200px;
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(252,252,252,.1) 100%);
 }
 
 .WidgetDisplay {
-    width: 75%;
-    
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.WeatherDisplay {
+    margin-top: 25px;
 }
 
 .icon {

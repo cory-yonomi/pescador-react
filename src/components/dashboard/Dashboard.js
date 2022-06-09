@@ -67,11 +67,6 @@ export default function Dashboard() {
                 </DashboardIcon>
             </div>
             <div className={classes.WidgetDisplay}>
-                
-                {/* <div className={classes.CurrentConditions}>
-                    <h3>Current Conditions at {favoriteStation ? favoriteStation[1].sourceInfo.siteName : "Favorite"}</h3>
-                    <p>Favorite river information</p>
-                </div> */}
 
                 <CurrentConditions station={favoriteStation}/>
 
