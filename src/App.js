@@ -1,5 +1,5 @@
 // **************** THIRD PARTY DEPENDENCIES ****************
-import React, { useState, Fragment, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { CloudinaryContext } from 'cloudinary-react'
 import { v4 as uuid } from 'uuid'
@@ -50,7 +50,6 @@ const App = () => {
 
 	return (
 		<CloudinaryContext cloudName="cb-sorel-creative">
-		<Fragment>
 			<Header />
 			<Routes>
 				<Route path="/" element={<Home msgAlert={msgAlert} user={user} />} />
@@ -130,7 +129,6 @@ const App = () => {
 					deleteAlert={deleteAlert}
 				/>
 			))}
-			</Fragment>
 		</CloudinaryContext>
 	)
 }

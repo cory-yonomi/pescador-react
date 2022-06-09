@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import SearchBar from '../shared/SearchBar'
 import Results from './Results'
+import styles from './Search.module.css'
 
 const Search = () => {
     const [searchBy, setSearchBy] = useState(null)
@@ -9,16 +10,16 @@ const Search = () => {
     const [loading, setLoading] = useState(false)
 
     return (
-        <>
-            <div>
+        <div  className={styles.Search}>
+            <div className={styles.SearchHeader}>
                 <h3>Get Your Local Conditions</h3>
-                <p>Choose Your Search:</p>
+                <p><i>Choose Your Search:</i></p>
                 <div>
                     <button onClick={()=> setSearchBy('zip')}>Zip Code</button>
                     <button onClick={()=> setSearchBy('coords')}>Long + Lat</button>
                 </div>
             </div>
-            <div>
+            <div className={styles.SearchBar}>
                 <SearchBar 
                     formStyle={searchBy} 
                     setLoading={setLoading} 
@@ -27,7 +28,7 @@ const Search = () => {
                 />
             </div>
             {!loading && weather ? <Results stations={stations} weather={weather} loading={loading} /> : null}
-        </>)
+        </div>)
 }
 
 export default Search

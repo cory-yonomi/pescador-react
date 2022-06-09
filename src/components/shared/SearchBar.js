@@ -26,7 +26,9 @@ const SearchBar = ({formStyle, setLoading, setStations, setWeather}) => {
                 setWeather(resp.data.weather)
                 setStations(resp.data.sites)
                 setLoading(false)
-                console.log(resp.data)
+                setZipInput('')
+                setLatInput('')
+                setLongInput('')
             })
     }
 
@@ -44,7 +46,6 @@ const SearchBar = ({formStyle, setLoading, setStations, setWeather}) => {
 
     const zipSearch = (
         <>
-            <label>Enter Your Zip</label>
             <input type="text" placeholder="Zip Code" onChange={zipHandler}/>
             <br />
         </>
@@ -52,11 +53,9 @@ const SearchBar = ({formStyle, setLoading, setStations, setWeather}) => {
 
     const coordSearch = (
         <>
-            <label>Latitude:</label>
-            <input type="text" onChange={latHandler}/>
+            <input type="text" placeholder="Latitude" onChange={latHandler}/>
             <br />
-            <label>Longitude:</label>
-            <input type="text" onChange={longHandler}/>
+            <input type="text" placeholder="Longitude" onChange={longHandler}/>
             <br />
         </>
     )
