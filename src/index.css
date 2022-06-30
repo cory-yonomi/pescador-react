@@ -32,3 +32,11 @@ code {
 .map-container {
   height: 400px;
 }
+
+.popup {
+  color: black;
+}
+
+.mapboxgl-popup-content {
+  margin: 0;
+}

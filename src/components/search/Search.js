@@ -56,7 +56,7 @@ const Search = () => {
                                         weather={weather} 
                                         loading={loading} 
                                         /> : null} */}
-            {!loading && weather && stations && position && <StationMap position={position}/>}
+            {!loading && weather && stations && position && <StationMap position={position} stations={stations}/>}
         </div>)
 }
 
