@@ -5,7 +5,7 @@ const SearchMarker = ({lon, lat, station, openPopup}) => {
   return (
     
         
-            <div className={styles.marker} onClick={(e)=> openPopup(e, station)}>
+            <div className={styles.marker} onClick={() => openPopup(station)}>
                 <span><b></b></span>
             </div>
     

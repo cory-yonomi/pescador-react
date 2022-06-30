@@ -23,3 +23,7 @@
   .marker b {
     transform: rotateZ(135deg)
   }
+
+  .popup {
+    color: black;
+  }

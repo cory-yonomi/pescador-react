@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import SearchComponent from './SearchComponent'
+import { MapContext } from '../../store/MapsContext'
 import Results from './Results'
 import StationMap from '../maps/StationMap'
 import styles from './Search.module.css'
