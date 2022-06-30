@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import axios from 'axios'
 // import classes from './Shared.module.css'
 
-const SearchBar = ({formStyle, setLoading, setStations, setWeather}) => {
+const SearchBar = ({formStyle, setLoading, setStations, setWeather, setPosition}) => {
     
     const [zipInput, setZipInput] = useState('')
     const [latInput, setLatInput] = useState('')
@@ -25,6 +25,7 @@ const SearchBar = ({formStyle, setLoading, setStations, setWeather}) => {
             .then(resp => {
                 setWeather(resp.data.weather)
                 setStations(resp.data.sites)
+                setPosition([resp.data.weather.lat, resp.data.weather.lon])
                 setLoading(false)
                 setZipInput('')
                 setLatInput('')

@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import SearchBar from '../shared/SearchBar'
 import styles from './Search.module.css'
 
-const SearchComponent = ({setLoading, setStations, setWeather}) => {
+const SearchComponent = ({setLoading, setStations, setWeather, setPosition}) => {
 
     const [searchBy, setSearchBy] = useState(null) 
 
@@ -21,7 +21,8 @@ const SearchComponent = ({setLoading, setStations, setWeather}) => {
                     formStyle={searchBy} 
                     setLoading={setLoading} 
                     setStations={setStations} 
-                    setWeather ={setWeather} 
+                    setWeather={setWeather}
+                    setPosition={setPosition} 
                 />
             </div>
     </div>
