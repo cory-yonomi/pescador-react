@@ -1,8 +1,11 @@
-import React, {useState} from 'react'
+import React, {useState, useContext } from 'react'
 import axios from 'axios'
+import { MapContext } from '../../store/MapsContext'
 // import classes from './Shared.module.css'
 
 const SearchBar = ({formStyle, setLoading, setStations, setWeather, setPosition}) => {
+
+    const {setMap} = useContext(MapContext)
     
     const [zipInput, setZipInput] = useState('')
     const [latInput, setLatInput] = useState('')
@@ -11,6 +14,7 @@ const SearchBar = ({formStyle, setLoading, setStations, setWeather, setPosition}
     function submitHandler(e) {
         e.preventDefault()
         setLoading(true)
+        setMap(null)
         axios({
             method: 'post',
             url: `http://localhost:8000/search/${formStyle}`,

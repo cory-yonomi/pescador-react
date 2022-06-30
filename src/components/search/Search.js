@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import SearchComponent from './SearchComponent'
-import { MapContext } from '../../store/MapsContext'
+
 import Results from './Results'
 import StationMap from '../maps/StationMap'
 import styles from './Search.module.css'
@@ -9,7 +9,7 @@ import axios from 'axios'
 import Station from '../stations/Station'
 
 const Search = () => {
-    
+
     const [weather, setWeather] = useState(null)
     const [stations, setStations] = useState(null)
     const [loading, setLoading] = useState(false)
@@ -47,7 +47,8 @@ const Search = () => {
 
     return (
         <div className={styles.Search}>
-            <SearchComponent  
+            <SearchComponent
+ 
                 setWeather={setWeather} 
                 setLoading={setLoading} 
                 setStations={setStations}

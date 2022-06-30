@@ -34,7 +34,7 @@ const StationMap = ({position, stations}) => {
 
             map.on('load', ()=> {
                 setMap(map)
-                map.resize()
+                // map.resize()
             })
 
             stations.streams.forEach((station, i) => {
