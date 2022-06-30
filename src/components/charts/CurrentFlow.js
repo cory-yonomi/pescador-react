@@ -28,7 +28,7 @@ const CurrentFlow = ({ data }) => {
                 <YAxis
                     dataKey="value"
                     type="number"
-                    domain={['dataMin', 'dataMax+100']}
+                    
                     interval="preserveEnd"
                     allowDataOverflow={true}
                 />

@@ -4,6 +4,7 @@ import WeatherCard from '../weather/WeatherCard'
 import classes from './Search.module.css'
 
 const Results = ({loading, weather, stations}) => {
+
     return (
         <div className={classes.Results}>
             <div className={classes.weatherDisplay}>
