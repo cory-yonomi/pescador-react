@@ -5,7 +5,7 @@ import { MapContext } from '../../store/MapsContext'
 
 const SearchBar = ({formStyle, setLoading, setStations, setWeather, setPosition}) => {
 
-    const {setMap} = useContext(MapContext)
+    const {setMap, setPopupContent} = useContext(MapContext)
     
     const [zipInput, setZipInput] = useState('')
     const [latInput, setLatInput] = useState('')
@@ -15,6 +15,7 @@ const SearchBar = ({formStyle, setLoading, setStations, setWeather, setPosition}
         e.preventDefault()
         setLoading(true)
         setMap(null)
+        setPopupContent(null)
         axios({
             method: 'post',
             url: `http://localhost:8000/search/${formStyle}`,
