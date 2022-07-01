@@ -8,7 +8,7 @@ h3 {
     text-align: center;
 }
 
-.Search > div {
+.Search:first-child {
     margin: 25px;
 }
 

@@ -11,6 +11,10 @@
     justify-content: center;
 }
 
+.DashboardIconDisplay a {
+    color: white;
+}
+
 .DashboardIcon {
     display: inline-block;
     margin: 20px 5px;
@@ -39,5 +43,5 @@
 
 .icon {
     font-size: 40px;
-    color: green;
+    color: mediumspringgreen;
 }

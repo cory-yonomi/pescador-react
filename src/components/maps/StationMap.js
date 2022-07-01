@@ -46,6 +46,10 @@ const StationMap = ({position, stations}) => {
         }
 
         if (!map) initializeMap({setMap, mapContainer})
+
+        return () => {
+            map && map.remove()
+        }
 	}, [map, setMap]);
 
     

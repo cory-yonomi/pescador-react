@@ -17,6 +17,7 @@ const WeatherCard = ({ weather, period }) => {
         
         return (
             <div>
+                <h4>Current</h4>
                 <img src={`http://openweathermap.org/img/wn/${weather.current.weather[0].icon}.png`} alt="Current weather icon" />
                 <h5>{weather.current.weather[0].main}</h5>
                 <p>{weather.current.temp}</p>
@@ -31,6 +32,7 @@ const WeatherCard = ({ weather, period }) => {
 
         return (
             <div>
+                <h4>3hr Forecast</h4>
                 <img src={`http://openweathermap.org/img/wn/${weather.hourly[3].weather[0].icon}.png`} alt="Forecast weather icon" />
                 <h5>{weather.hourly[3].weather[0].main}</h5>
                 <p>{weather.hourly[3].temp}</p>

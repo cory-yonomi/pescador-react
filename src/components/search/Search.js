@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import SearchComponent from './SearchComponent'
 
 import Results from './Results'
@@ -14,6 +14,7 @@ const Search = () => {
     const [stations, setStations] = useState(null)
     const [loading, setLoading] = useState(false)
     const [position, setPosition] = useState(null)
+    const [showSearch, setShowSearch] = useState(true)
 
     useEffect(()=>{
         
@@ -36,7 +37,7 @@ const Search = () => {
                 }
             })
             .then(resp => {
-                console.log('data:', resp.data.weather)
+                setShowSearch(false)
                 setWeather(resp.data.weather)
                 setStations(resp.data.sites)
                 setLoading(false)
@@ -47,17 +48,18 @@ const Search = () => {
 
     return (
         <div className={styles.Search}>
-            <SearchComponent
- 
+            {showSearch && <SearchComponent
+                setShowSearch={setShowSearch}
                 setWeather={setWeather} 
                 setLoading={setLoading} 
                 setStations={setStations}
                 setPosition={setPosition}
-            />
-            {/* {!loading && weather && stations ? <Results stations={stations}
+            />}
+            {!showSearch && <p onClick={()=>setShowSearch(true)}>New Search</p>}
+            {!loading && weather && stations ? <Results stations={stations}
                                         weather={weather} 
                                         loading={loading} 
-                                        /> : null} */}
+                                        /> : null}
             {!loading && weather && stations && position && <StationMap position={position} stations={stations}/>}
         </div>)
 }

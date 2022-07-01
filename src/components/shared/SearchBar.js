@@ -3,7 +3,7 @@ import axios from 'axios'
 import { MapContext } from '../../store/MapsContext'
 // import classes from './Shared.module.css'
 
-const SearchBar = ({formStyle, setLoading, setStations, setWeather, setPosition}) => {
+const SearchBar = ({formStyle, setLoading, setStations, setWeather, setPosition, setShowSearch}) => {
 
     const {setMap, setPopupContent} = useContext(MapContext)
     
@@ -13,29 +13,32 @@ const SearchBar = ({formStyle, setLoading, setStations, setWeather, setPosition}
 
     function submitHandler(e) {
         e.preventDefault()
-        setLoading(true)
-        setMap(null)
-        setPopupContent(null)
-        axios({
-            method: 'post',
-            url: `http://localhost:8000/search/${formStyle}`,
-            data: {
-                search: {
-                    zip: zipInput,
-                    lat: latInput,
-                    long: longInput
+        if((zipInput.length === 5 )|| (latInput.length > 2 && longInput.length > 2)) {
+            setLoading(true)
+            setMap(null)
+            setPopupContent(null)
+            axios({
+                method: 'post',
+                url: `http://localhost:8000/search/${formStyle}`,
+                data: {
+                    search: {
+                        zip: zipInput,
+                        lat: latInput,
+                        long: longInput
+                    }
                 }
-            }
-        })
-            .then(resp => {
-                setWeather(resp.data.weather)
-                setStations(resp.data.sites)
-                setPosition([resp.data.weather.lat, resp.data.weather.lon])
-                setLoading(false)
-                setZipInput('')
-                setLatInput('')
-                setLongInput('')
             })
+                .then(resp => {
+                    setShowSearch(false)
+                    setWeather(resp.data.weather)
+                    setStations(resp.data.sites)
+                    setPosition([resp.data.weather.lat, resp.data.weather.lon])
+                    setLoading(false)
+                    setZipInput('')
+                    setLatInput('')
+                    setLongInput('')
+                })
+        }
     }
 
     function zipHandler(e) {
