@@ -14,8 +14,7 @@ const StationMap = ({position, stations}) => {
 	
 	const [lng, setLng] = useState(position[1])
 	const [lat, setLat] = useState(position[0])
-	const [zoom, setZoom] = useState(9.5)
-    const [currentMarker, setCurrentMarker] = useState(null)
+	const [zoom, setZoom] = useState(9)
 
     function openPopup(station)  {
         setPopupContent(station)
@@ -27,7 +26,7 @@ const StationMap = ({position, stations}) => {
 		const initializeMap = ({setMap, mapContainer}) => {
             const map = new mapboxgl.Map({
                 container: mapContainer.current,
-                style: 'mapbox://styles/mapbox/streets-v11',
+                style: 'mapbox://styles/mapbox/outdoors-v11',
                 center: [lng, lat],
                 zoom: zoom
 		    });

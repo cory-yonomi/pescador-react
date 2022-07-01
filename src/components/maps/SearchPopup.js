@@ -10,7 +10,7 @@ const SearchPopup = ({station}) => {
     const popUpRef = useRef()
 
     useEffect(() => {
-        const popup = new mapboxgl.Popup({offset: 15})
+        const popup = new mapboxgl.Popup({offset: 30})
             .setLngLat([station.lon, station.lat])
             .setDOMContent(popUpRef.current)
             .addTo(map)
