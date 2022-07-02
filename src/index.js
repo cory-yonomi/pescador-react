@@ -1,15 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
+import App from './App'
+import apiUrl from './apiConfig'
 import { BrowserRouter } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
-import { AppDataProvider } from './store/AppDataContext';
-import { AuthContextProvider } from './store/AuthContext';
+import { AppDataProvider } from './store/AppDataContext'
+import { AuthContextProvider } from './store/AuthContext'
+import { MapsProvider } from './store/MapsContext'
 
 const client = new ApolloClient({
-  uri: "http://localhost:8000/graphql",
+  uri: `${apiUrl}/graphql`,
   cache: new InMemoryCache()
 })
 
@@ -18,7 +20,9 @@ ReactDOM.render(
     <BrowserRouter>
       <AuthContextProvider>
         <AppDataProvider>
-          <App />
+          <MapsProvider>
+            <App />
+          </MapsProvider>
         </AppDataProvider>
       </AuthContextProvider>
     </BrowserRouter>

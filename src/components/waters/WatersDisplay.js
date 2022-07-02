@@ -5,16 +5,14 @@ import WaterCard from './WaterCard'
 
 const WatersDisplay = ({ waters, addClickHandler }) => {
 
-  const allWaters = waters.map(water => {
-    return (
-      <WaterCard water={water} key={water._id}/>
-    )
-  })
-
   return (
       <div className={classes.WatersDisplay}>
           <h2>My Waters</h2>
-          {allWaters}
+          {waters && (waters.map(water => {
+            return (
+              <WaterCard water={water} key={water._id}/>
+            )
+          }))}
           <BsPlusSquareFill
               className={classes.icon}
               onClick={addClickHandler}

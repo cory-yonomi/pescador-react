@@ -1,6 +1,5 @@
 // **************** THIRD PARTY DEPENDENCIES ****************
 import { useEffect, useState, useContext } from 'react'
-import axios from 'axios'
 // import { gql, useQuery } from '@apollo/client'
 // import axios from 'axios'
 import { BsPlusSquareFill, BsJournalBookmarkFill} from 'react-icons/bs'
@@ -12,6 +11,7 @@ import AuthContext from '../../store/AuthContext'
 import classes from './Dashboard.module.css'
 import DashboardIcon from './DashboardIcon'
 import CurrentConditions from './CurrentConditions'
+import { getDashboardData } from '../../api/userData'
 
 export default function Dashboard() {
     const user = useContext(AuthContext).user
@@ -22,13 +22,7 @@ export default function Dashboard() {
     
     // **************** HOOKS ****************
     useEffect(() => {
-        axios({
-            url: `http://localhost:8000/waterData/site/${user.favoriteStation.usgsId}`,
-            method: 'GET',
-            headers: {
-                authorization: `Bearer Token ${user.token}`
-            }
-        })
+        getDashboardData(user)
         .then(station => {
             setFavoriteStation(station.data)
         })

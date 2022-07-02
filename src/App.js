@@ -19,7 +19,6 @@ import Dashboard from './components/dashboard/Dashboard'
 import Waters from './components/waters/Waters'
 import Water from './components/waters/Water'
 import Journal from './components/journal/Journal'
-import { MapsProvider } from './store/MapsContext'
 
 const App = () => {
 	const user = useContext(AuthContext).user
@@ -54,7 +53,7 @@ const App = () => {
 			<Header />
 			<Routes>
 				<Route path="/" element={<Home msgAlert={msgAlert} user={user} />} />
-				<Route path="/search" element={<MapsProvider><Search /></MapsProvider>} />
+				<Route path="/search" element={<Search />} />
 				<Route
 					path="/sign-up"
 					element={<SignUp msgAlert={msgAlert} setUser={setUser} />}

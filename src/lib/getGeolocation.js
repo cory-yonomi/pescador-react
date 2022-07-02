@@ -10,7 +10,7 @@ export default function getGeolocation(setPosition) {
         // if the user does not allow access, keep state null and trigger
         // render of SearchComponent
         function (error) {
-            setPosition(['error']);
+            setPosition(['null']);
         }
     );
 }

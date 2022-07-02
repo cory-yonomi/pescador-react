@@ -1,5 +1,5 @@
 import React, {useContext} from "react"
-import axios from "axios"
+import { makeFavoriteStation } from "../../api/userData";
 import AuthContext from "../../store/AuthContext"
 
 const FavoriteButton = ({station}) => {
@@ -7,18 +7,7 @@ const FavoriteButton = ({station}) => {
 
 
     const addFavoriteHandler = () => {
-        console.log("user in favoriteHandler", user);
-        axios({
-            url: `http://localhost:8000/user/favorite`,
-            method: "POST",
-            headers: {
-                Authorization: `Bearer ${user.token}`,
-                "Content-Type": "application/json",
-            },
-            data: {
-                stationId: `${station._id}`,
-            },
-        })
+        makeFavoriteStation(user, station)
     }
 
     return (

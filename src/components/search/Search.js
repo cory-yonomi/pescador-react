@@ -1,66 +1,52 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import SearchComponent from './SearchComponent'
-
+import AppDataContext from '../../store/AppDataContext'
 import Results from './Results'
 import StationMap from '../maps/StationMap'
 import styles from './Search.module.css'
 import getGeolocation from '../../lib/getGeolocation'
-import axios from 'axios'
-import Station from '../stations/Station'
+import { autoSearch } from '../../api/search'
 
 const Search = () => {
 
-    const [weather, setWeather] = useState(null)
-    const [stations, setStations] = useState(null)
     const [loading, setLoading] = useState(false)
-    const [position, setPosition] = useState(null)
     const [showSearch, setShowSearch] = useState(true)
+
+    const {foundStations, setFoundStations, weather, setWeather, position, setPosition} = useContext(AppDataContext)
 
     useEffect(()=>{
         
         // Get user's geolocation coordinates
-        if(!position && !weather && !stations){
+        if(!position && !weather && !foundStations){
             console.log('getting location')
             getGeolocation(setPosition)
         }
-        
-        if(position && !weather && !stations){
-
-            axios({
-                method: 'post',
-                url: `http://localhost:8000/search/coords`,
-                data: {
-                    search: {
-                        lat: position[0],
-                        long: position[1]
-                    }
-                }
-            })
+        // If user allows location, execute the query
+        // If not, the searchShow will stay true allowing user to search by zip/coords
+        if(position && !weather && !foundStations){
+            autoSearch(position[0], position[1])
             .then(resp => {
                 setShowSearch(false)
                 setWeather(resp.data.weather)
-                setStations(resp.data.sites)
+                setFoundStations(resp.data.sites)
                 setLoading(false)
             })
             .catch(err => console.log(err))
         }
-    }, [position])
+    }, [position, foundStations, weather])
 
     return (
         <div className={styles.Search}>
             {showSearch && <SearchComponent
-                setShowSearch={setShowSearch}
-                setWeather={setWeather} 
+                setShowSearch={setShowSearch} 
                 setLoading={setLoading} 
-                setStations={setStations}
-                setPosition={setPosition}
             />}
             {!showSearch && <p onClick={()=>setShowSearch(true)}>New Search</p>}
-            {!loading && weather && stations ? <Results stations={stations}
+            {!loading && weather && foundStations ? <Results stations={foundStations}
                                         weather={weather} 
                                         loading={loading} 
                                         /> : null}
-            {!loading && weather && stations && position && <StationMap position={position} stations={stations}/>}
+            {!loading && weather && foundStations && position && <StationMap position={position} stations={foundStations}/>}
         </div>)
 }
 

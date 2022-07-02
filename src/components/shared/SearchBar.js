@@ -1,15 +1,19 @@
 import React, {useState, useContext } from 'react'
-import axios from 'axios'
+import AppDataContext from '../../store/AppDataContext';
 import { MapContext } from '../../store/MapsContext'
+import { executeSearch } from '../../api/search';
+import getGeolocation from '../../lib/getGeolocation';
 // import classes from './Shared.module.css'
 
-const SearchBar = ({formStyle, setLoading, setStations, setWeather, setPosition, setShowSearch}) => {
+const SearchBar = ({formStyle, setLoading, setShowSearch, setParentMessage}) => {
 
     const {setMap, setPopupContent} = useContext(MapContext)
+    const { setFoundStations, setWeather, setPosition, position } = useContext(AppDataContext)
     
     const [zipInput, setZipInput] = useState('')
     const [latInput, setLatInput] = useState('')
     const [longInput, setLongInput] = useState('')
+    const [message, setMessage] = useState(null)
 
     function submitHandler(e) {
         e.preventDefault()
@@ -17,21 +21,33 @@ const SearchBar = ({formStyle, setLoading, setStations, setWeather, setPosition,
             setLoading(true)
             setMap(null)
             setPopupContent(null)
-            axios({
-                method: 'post',
-                url: `http://localhost:8000/search/${formStyle}`,
-                data: {
-                    search: {
-                        zip: zipInput,
-                        lat: latInput,
-                        long: longInput
-                    }
-                }
-            })
+            executeSearch(formStyle, zipInput, latInput, longInput)
                 .then(resp => {
                     setShowSearch(false)
                     setWeather(resp.data.weather)
-                    setStations(resp.data.sites)
+                    setFoundStations(resp.data.sites)
+                    setPosition([resp.data.weather.lat, resp.data.weather.lon])
+                    setLoading(false)
+                    setZipInput('')
+                    setLatInput('')
+                    setLongInput('')
+                })
+        }
+    }
+
+    function myLocationHandler() {
+        if(!position)getGeolocation(setPosition)
+        if(!position){
+            setMessage('We cannot access your location data, you may need to reset permissions for Pescador.')
+        } else {
+            setLoading(true)
+            setMap(null)
+            setPopupContent(null)
+            executeSearch('coords', zipInput, position[0], position[1])
+                .then(resp => {
+                    setShowSearch(false)
+                    setWeather(resp.data.weather)
+                    setFoundStations(resp.data.sites)
                     setPosition([resp.data.weather.lat, resp.data.weather.lon])
                     setLoading(false)
                     setZipInput('')
@@ -77,6 +93,8 @@ const SearchBar = ({formStyle, setLoading, setStations, setWeather, setPosition,
                 {formStyle === 'coords' && coordSearch}
                 <input type="submit" value="Search" />
             </form>
+            <button onClick={myLocationHandler}>Use My Location</button>
+            {message && <p>{message}</p>}
         </>
     );
 };
