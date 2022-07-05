@@ -1,4 +1,5 @@
 import React, {useContext, useEffect, useRef} from 'react'
+import { Link } from 'react-router-dom'
 import { MapContext } from '../../store/MapsContext'
 import AuthContext from '../../store/AuthContext'
 import mapboxgl from 'mapbox-gl'
@@ -26,6 +27,7 @@ const SearchPopup = ({station}) => {
             <div>{station.name}</div>
             <div>Flow: {station.flowRate} cfs</div>
             <div>Gage Height: {station.gageHt} ft</div>
+            <Link to={`/station/${station.usgsId}`}><button>See More</button></Link>
             {user && <button>Add to Favorites</button>}
         </div>
     </div>

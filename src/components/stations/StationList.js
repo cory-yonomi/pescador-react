@@ -1,7 +1,7 @@
 import React from 'react'
 import AddButton from '../shared/AddButton'
 import FavoriteButton from '../shared/FavoriteButton'
-import Station from './Station'
+import StationCard from './StationCard'
 
 const StationList = ({water, loading, stations, setWaterStations, source}) => {
     
@@ -9,22 +9,22 @@ const StationList = ({water, loading, stations, setWaterStations, source}) => {
 
     if(!water){
         allStations = stations.map(station => {
-            return <Station station={station} key={station.usgsId} provideData={true}/>
+            return <StationCard station={station} key={station.usgsId} provideData={true}/>
         })
     } else if(water && source === 'water'){
         allStations = stations.map(station => {
             return (
-                <Station station={station} key={station.usgsId}>
+                <StationCard station={station} key={station.usgsId}>
                     <FavoriteButton station={station}/>
-                </Station>
+                </StationCard>
             )
         })
     } else if(water && source === 'found'){
         allStations = stations.map(station => {
             return (
-                <Station station={station} key={station.usgsId}>
+                <StationCard station={station} key={station.usgsId}>
                     <AddButton setWaterStations={setWaterStations} water={water} station={station}/>
-                </Station>
+                </StationCard>
             )
         })
     }

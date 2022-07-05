@@ -10,6 +10,7 @@ import AutoDismissAlert from './components/shared/AutoDismissAlert/AutoDismissAl
 import Header from './components/shared/Header'
 import RequireAuth from './components/shared/RequireAuth'
 import Home from './components/home/Home'
+import About from './components/about/About'
 import Search from './components/search/Search'
 import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
@@ -19,6 +20,7 @@ import Dashboard from './components/dashboard/Dashboard'
 import Waters from './components/waters/Waters'
 import Water from './components/waters/Water'
 import Journal from './components/journal/Journal'
+import Station from './components/stations/Station'
 
 const App = () => {
 	const user = useContext(AuthContext).user
@@ -54,6 +56,8 @@ const App = () => {
 			<Routes>
 				<Route path="/" element={<Home msgAlert={msgAlert} user={user} />} />
 				<Route path="/search" element={<Search />} />
+				<Route path='/about' element={<About />}/>
+				<Route path='/station/:stationId' element={<Station />}/>
 				<Route
 					path="/sign-up"
 					element={<SignUp msgAlert={msgAlert} setUser={setUser} />}

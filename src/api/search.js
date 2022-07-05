@@ -27,3 +27,10 @@ export function autoSearch(lat, lon) {
         }
     })
 }
+
+export function singleStationQuery(stationId) {
+    return axios({
+        method: 'get',
+        url: `${apiUrl}/waterData/site/${stationId}`
+    })
+}

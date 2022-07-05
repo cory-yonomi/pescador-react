@@ -12,3 +12,8 @@
 .StationFormInput {
     margin: 5px;
 }
+
+.stationChart {
+    height: 400px;
+    width: 70%;
+}

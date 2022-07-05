@@ -76,7 +76,7 @@ const Header = () => {
 							<span className='navbar-text mr-2'>Welcome, {user.email}</span>
 						)}
 						{alwaysOptions}
-						{user ? authenticatedOptions : unauthenticatedOptions}
+						{/* {user ? authenticatedOptions : unauthenticatedOptions} */}
 					</Nav>
 				</Navbar.Collapse>
 			</Container>
