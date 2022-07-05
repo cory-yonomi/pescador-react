@@ -1,6 +1,7 @@
 import React, {useState, useContext } from 'react'
 import AppDataContext from '../../store/AppDataContext';
 import { MapContext } from '../../store/MapsContext'
+import AuthContext from '../../store/AuthContext'
 import { executeSearch } from '../../api/search';
 import getGeolocation from '../../lib/getGeolocation';
 // import classes from './Shared.module.css'
@@ -9,6 +10,7 @@ const SearchBar = ({formStyle, setLoading, setShowSearch, setParentMessage}) => 
 
     const {setMap, setPopupContent} = useContext(MapContext)
     const { setFoundStations, setWeather, setPosition, position } = useContext(AppDataContext)
+    const { user } = useContext(AuthContext)
     
     const [zipInput, setZipInput] = useState('')
     const [latInput, setLatInput] = useState('')
@@ -93,7 +95,7 @@ const SearchBar = ({formStyle, setLoading, setShowSearch, setParentMessage}) => 
                 {formStyle === 'coords' && coordSearch}
                 <input type="submit" value="Search" />
             </form>
-            <button onClick={myLocationHandler}>Use My Location</button>
+            {user && <button onClick={myLocationHandler}>Use My Location</button>}
             {message && <p>{message}</p>}
         </>
     );

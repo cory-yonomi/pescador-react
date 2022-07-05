@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { gql, useQuery } from '@apollo/client'
 import StationList from '../stations/StationList'
 import classes from './Waters.module.css'
@@ -11,6 +11,8 @@ const Water = ({ user }) => {
     const [water, setWater] = useState({})
     const [waterStations, setWaterStations] = useState([])
     const [addStationModal, setAddStationModal] = useState(false)
+
+    const navigate = useNavigate()
 
     const { id } = useParams()
     console.log( id )
@@ -59,12 +61,12 @@ const Water = ({ user }) => {
             </div>
             <div>
                 <h2>Stations</h2>
-                <button onClick={addStationHandler}>Add Stations</button>
+                { !addStationModal && <button onClick={addStationHandler}>Add Stations</button>}
             </div>
             <div>
-                {addStationModal ?  <AddStation water={water} setWaterStations={setWaterStations}/> : <StationList user={user} water={water} stations={waterStations} source={'water'}/> }
+                {addStationModal ?  <AddStation water={water} setWaterStations={setWaterStations} setAddStationModal={setAddStationModal}/> : <StationList user={user} water={water} stations={waterStations} source={'water'}/> }
             </div>
-            <BackButton />
+            <BackButton onClick={() => navigate(-1)}/>
         </div>
     )
 };

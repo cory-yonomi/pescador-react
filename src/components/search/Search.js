@@ -24,16 +24,17 @@ const Search = () => {
         // If user allows location, execute the query
         // If not, the searchShow will stay true allowing user to search by zip/coords
         if(position && !weather && !foundStations){
+            setShowSearch(false)
             autoSearch(position[0], position[1])
             .then(resp => {
-                setShowSearch(false)
+                
                 setWeather(resp.data.weather)
                 setFoundStations(resp.data.sites)
                 setLoading(false)
             })
             .catch(err => console.log(err))
         }
-    }, [position, foundStations, weather])
+    }, [position, foundStations, weather, setFoundStations, setPosition, setWeather])
 
     return (
         <div className={styles.Search}>

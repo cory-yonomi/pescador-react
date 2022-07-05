@@ -13,7 +13,7 @@ export function getDashboardData(user) {
 
 export function makeFavoriteStation(user, station) {
     return axios({
-        url: `http://localhost:8000/user/favorite`,
+        url: `${apiUrl}/user/favorite`,
         method: "POST",
         headers: {
             Authorization: `Bearer ${user.token}`,

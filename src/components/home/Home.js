@@ -10,12 +10,12 @@ const Home = (props) => {
                         <h1 className={styles.Title}>Pescador</h1>
                         <h4>Weather and conditions at your fingertips</h4>
                     </div>
-                    <Link to="/sign-in">
+                    {/* <Link to="/sign-in">
                         <button className={styles.Button}>Log In</button>
                     </Link>
                     <Link to="/sign-up">
                         <button className={styles.Button}>Sign Up</button>
-                    </Link>
+                    </Link> */}
                 </div>
                 <div className={styles.Row}>
                     <h3>Find current conditions for your area:</h3>

@@ -1,33 +1,34 @@
 import { useState, useContext } from 'react'
 import AppDataContext from '../../store/AppDataContext'
 import classes from './Stations.module.css'
-import StationList from './StationList'
-import SearchBar from '../shared/SearchBar'
+import StationMap from '../maps/StationMap'
+import BackButton from '../shared/BackButton'
+import SearchComponent from '../search/SearchComponent'
 
-const AddStation = ({ water, setWaterStations }) => {
+const AddStation = ({ setAddStationModal }) => {
 
 	const [loading, setLoading] = useState(false)
 	const [showSearch, setShowSearch] = useState(true)
 	const [message, setMessage] = useState(null)
 
-	const {foundStations} = useContext(AppDataContext)
+	const {foundStations, position} = useContext(AppDataContext)
 
 	return (
 		<div className={classes.AddStation}>
-			{showSearch && <SearchBar  
+			{/* {showSearch && <SearchBar  
+                setLoading={setLoading} 
+                setShowSearch={setShowSearch}
+				setParentMessage={setMessage}
+			/>} */}
+			{showSearch && <SearchComponent  
                 setLoading={setLoading} 
                 setShowSearch={setShowSearch}
 				setParentMessage={setMessage}
 			/>}
       <p>{message && message}</p>
       <p>{loading && "Searching..."}</p>
-			{foundStations && (<StationList
-				water={water}
-				source={'found'}
-				stations={foundStations}
-				setWaterStations={setWaterStations}
-				setLoading={setLoading}
-			/>)}
+			{!loading && foundStations && <StationMap stations={foundStations} position={position}/>}
+			<BackButton onClick={() => setAddStationModal(false)}/>
 		</div>
 	)
 }

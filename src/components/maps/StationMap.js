@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef, useContext} from 'react'
+import React, {useState, useEffect, useRef, useContext, useCallback} from 'react'
 import ReactDOM from 'react-dom'
 import { MapContext } from '../../store/MapsContext'
 import SearchPopup from './SearchPopup'
@@ -16,13 +16,14 @@ const StationMap = ({position, stations}) => {
 	const [lat, setLat] = useState(position[0])
 	const [zoom, setZoom] = useState(9)
 
-    function openPopup(station)  {
+    const popupCallback = useCallback(function openPopup(station)  {
         setPopupContent(station)
-    }
+    }, [setPopupContent])
 
 	mapboxgl.accessToken = 'pk.eyJ1IjoiY2Jzb3JlbCIsImEiOiJja3p4cmo1aDgwNDFmMm9uMW50NXNuc25uIn0.hf69sRAXXmSEZi3TBKwnxw'
 
 	useEffect(() => {
+        
 		const initializeMap = ({setMap, mapContainer}) => {
             const map = new mapboxgl.Map({
                 container: mapContainer.current,
@@ -39,18 +40,19 @@ const StationMap = ({position, stations}) => {
             stations.streams.forEach((station, i) => {
                 const ref = React.createRef()
                 ref.current = document.createElement('div')
-                ReactDOM.render(<SearchMarker station={station} openPopup={openPopup}/>, ref.current)
+                ReactDOM.render(<SearchMarker station={station} openPopup={popupCallback}/>, ref.current)
     
                 new mapboxgl.Marker(ref.current).setLngLat([station.lon, station.lat]).addTo(map)
             })
         }
 
         if (!map) initializeMap({setMap, mapContainer})
-
+        
         return () => {
             map && map.remove()
+            map && setMap(null)
         }
-	}, [map, setMap]);
+	}, [map, setMap, lat, lng, popupCallback, zoom, stations.streams]);
 
     
 

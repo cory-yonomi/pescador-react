@@ -1,4 +1,5 @@
-import React from "react"
+import React from 'react'
+import styles from './Weather.module.css'
 
 const WeatherCard = ({ weather, period }) => {
 
@@ -16,13 +17,21 @@ const WeatherCard = ({ weather, period }) => {
         let direction = windDirection(weather.current.wind_deg)
         
         return (
-            <div>
-                <h4>Current</h4>
-                <img src={`http://openweathermap.org/img/wn/${weather.current.weather[0].icon}.png`} alt="Current weather icon" />
-                <h5>{weather.current.weather[0].main}</h5>
-                <p>{weather.current.temp}</p>
-                <p>{weather.current.pressure} hPa</p>
-                <p>{weather.current.wind_speed} @ {direction} {weather.current.wind_deg}°</p>
+            <div className={styles.weatherCard}>
+                <div className={styles.weatherCardTitle}>
+                    <h4>Current</h4>
+                </div>
+                <div className={styles.weatherCardBody}>
+                    <div className={styles.weatherCardBodyLeft}>
+                        <img src={`http://openweathermap.org/img/wn/${weather.current.weather[0].icon}.png`} alt="Current weather icon" />
+                        <h5>{weather.current.weather[0].main}</h5>
+                        <p>{Math.round(weather.current.temp)}°</p>
+                    </div>
+                    <div className={styles.weatherCardBodyRight}>
+                        <p>{weather.current.pressure} hPa</p>
+                        <p>{weather.current.wind_speed}mph @ {direction} {weather.current.wind_deg}°</p>
+                    </div>
+                </div>  
             </div>
         )
 
@@ -31,13 +40,29 @@ const WeatherCard = ({ weather, period }) => {
         let direction = windDirection(weather.hourly[3].wind_deg)
 
         return (
-            <div>
-                <h4>3hr Forecast</h4>
-                <img src={`http://openweathermap.org/img/wn/${weather.hourly[3].weather[0].icon}.png`} alt="Forecast weather icon" />
-                <h5>{weather.hourly[3].weather[0].main}</h5>
-                <p>{weather.hourly[3].temp}</p>
-                <p>{weather.hourly[3].pressure} hPa</p>
-                <p>{weather.hourly[3].wind_speed} @ {direction} {weather.current.wind_deg}°</p>
+            // <div>
+            //     <h4>3hr Forecast</h4>
+            //     <img src={`http://openweathermap.org/img/wn/${weather.hourly[3].weather[0].icon}.png`} alt="Forecast weather icon" />
+            //     <h5>{weather.hourly[3].weather[0].main}</h5>
+            //     <p>{Math.round(weather.hourly[3].temp)}°</p>
+            //     <p>{weather.hourly[3].pressure} hPa</p>
+            //     <p>{weather.hourly[3].wind_speed}mph @ {direction} {weather.current.wind_deg}°</p>
+            // </div>
+            <div className={styles.weatherCard}>
+                <div className={styles.weatherCardTitle}>
+                    <h4>3 HR Forecast</h4>
+                </div>
+                <div className={styles.weatherCardBody}>
+                    <div className={styles.weatherCardBodyLeft}>
+                        <img src={`http://openweathermap.org/img/wn/${weather.hourly[3].weather[0].icon}.png`} alt="Forecast weather icon" />
+                        <h5>{weather.hourly[3].weather[0].main}</h5>
+                        <p>{Math.round(weather.hourly[3].temp)}°</p>
+                    </div>
+                    <div className={styles.weatherCardBodyRight}>
+                        <p>{weather.hourly[3].pressure} hPa</p>
+                        <p>{weather.hourly[3].wind_speed}mph @ {direction} {weather.hourly[3].wind_deg}°</p>
+                    </div>
+                </div>  
             </div>
         )
     }
