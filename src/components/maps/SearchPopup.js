@@ -2,7 +2,7 @@ import React, {useContext, useEffect, useRef} from 'react'
 import { Link } from 'react-router-dom'
 import { MapContext } from '../../store/MapsContext'
 import AuthContext from '../../store/AuthContext'
-import mapboxgl from '!mapbox-gl'
+import mapboxgl from 'mapbox-gl'
 import styles from './Maps.module.css'
 
 const SearchPopup = ({station}) => {
