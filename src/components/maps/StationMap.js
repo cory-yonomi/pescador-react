@@ -12,9 +12,9 @@ const StationMap = ({position, stations}) => {
     const mapContainer = useRef(null)
     const {setMap, map, setPopupContent, popupContent} = useContext(MapContext)
 	
-	const [lng, setLng] = useState(position[1])
-	const [lat, setLat] = useState(position[0])
-	const [zoom, setZoom] = useState(9)
+// 	const [lng, setLng] = useState(position[1])
+// 	const [lat, setLat] = useState(position[0])
+// 	const [zoom, setZoom] = useState(9)
 
     const popupCallback = useCallback(function openPopup(station)  {
         setPopupContent(station)
@@ -28,8 +28,8 @@ const StationMap = ({position, stations}) => {
             const map = new mapboxgl.Map({
                 container: mapContainer.current,
                 style: 'mapbox://styles/mapbox/outdoors-v11',
-                center: [lng, lat],
-                zoom: zoom
+                center: [position[1], position[0]],
+                zoom: 9
 		    });
 
             map.on('load', ()=> {
@@ -52,7 +52,7 @@ const StationMap = ({position, stations}) => {
             map && map.remove()
             map && setMap(null)
         }
-	}, [map, setMap, lat, lng, popupCallback, zoom, stations.streams]);
+	}, [map, setMap, popupCallback, stations.streams]);
 
     
 

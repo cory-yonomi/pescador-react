@@ -22,31 +22,31 @@ const brandStyle = {
 const Header = () => {
 	const user = useContext(AuthContext).user
 
-	const authenticatedOptions = (
-		<>
-			<Nav.Link>
-				<Link to='change-password' style={linkStyle}>
-					Change Password
-				</Link>
-			</Nav.Link>
-			<Nav.Link>
-				<Link to='sign-out' style={linkStyle}>
-					Sign Out
-				</Link>
-			</Nav.Link>
-		</>
-	)
+	// const authenticatedOptions = (
+	// 	<>
+	// 		<Nav.Link>
+	// 			<Link to='change-password' style={linkStyle}>
+	// 				Change Password
+	// 			</Link>
+	// 		</Nav.Link>
+	// 		<Nav.Link>
+	// 			<Link to='sign-out' style={linkStyle}>
+	// 				Sign Out
+	// 			</Link>
+	// 		</Nav.Link>
+	// 	</>
+	// )
 	
-	const unauthenticatedOptions = (
-		<>
-			<Nav.Link href="/sign-up">
-				<Link to='sign-up' style={linkStyle}>Sign Up</Link>
-			</Nav.Link>
-			<Nav.Link>
-				<Link to='sign-in' style={linkStyle}>Sign In</Link>
-			</Nav.Link>
-		</>
-	)
+	// const unauthenticatedOptions = (
+	// 	<>
+	// 		<Nav.Link href="/sign-up">
+	// 			<Link to='sign-up' style={linkStyle}>Sign Up</Link>
+	// 		</Nav.Link>
+	// 		<Nav.Link>
+	// 			<Link to='sign-in' style={linkStyle}>Sign In</Link>
+	// 		</Nav.Link>
+	// 	</>
+	// )
 	
 	const alwaysOptions = (
 		<>

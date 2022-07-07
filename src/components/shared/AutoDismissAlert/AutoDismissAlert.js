@@ -14,6 +14,7 @@ function AutoDismissAlert(props) {
 		let timeoutId = setTimeout(handleClose, 5000)
 
 		if (show) {
+			// eslint-disable-next-line no-unused-vars
 			let deleteTimeout = setTimeout(() => {
 				deleteAlert(id)
 			}, 3000)
