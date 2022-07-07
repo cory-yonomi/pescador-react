@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef, useContext, useCallback} from 'react'
+import React, {useEffect, useRef, useContext, useCallback} from 'react'
 import ReactDOM from 'react-dom'
 import { MapContext } from '../../store/MapsContext'
 import SearchPopup from './SearchPopup'
@@ -52,7 +52,7 @@ const StationMap = ({position, stations}) => {
             map && map.remove()
             map && setMap(null)
         }
-	}, [map, setMap, popupCallback, stations.streams]);
+	}, [map, setMap, position, popupCallback, stations.streams]);
 
     
 
