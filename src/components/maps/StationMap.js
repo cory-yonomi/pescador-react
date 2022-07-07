@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useContext, useCallback} from 'react'
 import ReactDOM from 'react-dom'
 import { MapContext } from '../../store/MapsContext'
 import SearchPopup from './SearchPopup'
-import mapboxgl from 'mapbox-gl'
+import mapboxgl from '!mapbox-gl'
 import SearchMarker from './SearchMarker'
 // import styles from './Maps.module.css'
 
