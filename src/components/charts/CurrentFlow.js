@@ -8,13 +8,12 @@ import {
     Tooltip,
     ResponsiveContainer,
 } from "recharts"
-import { DateTime } from 'luxon'
+
 
 const CustomTooltip = ({ active, payload, label }) => {
     console.log(payload)
     if (active && payload && payload.length) {
-        console.log(Date(payload[0].date))
-        console.log(DateTime.fromFormat(payload[0].date, 'LLLL dd yyyy'))
+        
       return (
         <div className="custom-tooltip">
           {/* <div>{DateTime.fromISO(payload[0].date)}</div> */}
