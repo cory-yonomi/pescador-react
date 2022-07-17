@@ -11,12 +11,13 @@ import {
 
 
 const CustomTooltip = ({ active, payload, label }) => {
-    console.log(payload)
+
     if (active && payload && payload.length) {
-        
+        const date = new Date(payload[0].payload.date)
+
       return (
         <div className="custom-tooltip">
-          {/* <div>{DateTime.fromISO(payload[0].date)}</div> */}
+          <div>{date.toLocaleTimeString("en-US")}</div>
           <div>{payload[0].value} cfs</div>
         </div>
       )
